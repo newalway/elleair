@@ -1,0 +1,38 @@
+admin_news_category:
+  path: /
+  defaults: {_controller: ProjectBundle:AdminNewsCategory:index}
+  methods:  [GET]
+
+admin_news_category_new:
+  path: /new
+  defaults: {_controller: ProjectBundle:AdminNewsCategory:new}
+  methods:  [GET,POST]
+
+admin_news_category_edit:
+  path: /{id}/edit
+  defaults: {_controller: ProjectBundle:AdminNewsCategory:edit}
+  methods:  [GET,POST]
+  requirements:
+    id: \d+
+
+admin_news_category_delete:
+  path: /{id}/delete
+  defaults: {_controller: ProjectBundle:AdminNewsCategory:delete}
+  methods:  [GET]
+  requirements:
+    id: \d+
+
+admin_news_category_group_delete:
+  path: /group-delete
+  defaults: {_controller: ProjectBundle:AdminNewsCategory:group_delete}
+  methods:  [POST]
+
+admin_news_category_sort:
+  path: /sort
+  defaults: {_controller: ProjectBundle:AdminNewsCategory:sort}
+  methods:  [GET]
+
+admin_news_category_sort_prosess:
+  path: /sort-prosess
+  defaults: {_controller: ProjectBundle:AdminNewsCategory:sort_prosess}
+  methods:  [POST]

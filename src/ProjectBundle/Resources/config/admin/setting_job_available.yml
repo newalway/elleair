@@ -1,0 +1,17 @@
+admin_setting_job_available:
+  path:  /
+  defaults: { _controller: ProjectBundle:AdminSettingJobAvailable:index }
+  requirements:
+    _method: get
+
+admin_update_setting_job_available:
+  path: /update
+  defaults: {_controller: ProjectBundle:AdminSettingJobAvailable:update}
+  requirements:
+    _method: post
+    id: \d+
+
+
+admin_update_setting_dowload_filejob_available:
+    path:     /download-fileJob-available
+    defaults: { _controller: ProjectBundle:AdminSettingJobAvailable:downloadFileJobAvailable }

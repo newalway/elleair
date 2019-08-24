@@ -1,0 +1,589 @@
+{% extends "ProjectBundle:"~ view_layout ~":layout.html.twig" %}
+
+{% block html_meta %}
+	{{ parent() }}
+	<link href="https://fonts.googleapis.com/css?family=Prompt:200,300,400,600,700&display=swap" rel="stylesheet">
+{% endblock %}
+
+{% block title %}{{data.getTitle}} | {% trans %}menu.our.brands{% endtrans %} | {{ parent() }}{% endblock %}
+{% block our_brands_active %}active{% endblock %}
+
+{% block banner_section %}
+	<div class="hero-section">
+		<div class="hero-slider">
+			<div class="hero-item">
+				{% if data.imageBanner %}
+				<img src="{{asset(data.imageBanner)}}" alt="{{data.getTitle}}" class="w-100"/>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block content %}
+<div class="pt-60 pb-50">
+	<div class="container">
+		<div class="row">
+			<!-- Section Title Start -->
+			<div class="section-title text-center col-12 pb-50 pt-40 bg-none">
+				<h1 style="text-transform: uppercase;">ABOUT {{data.getTitle}}</h1>
+			</div>
+
+			{% if data.ourBrandVideos|length > 0 %}
+			<div class="col-md-8 offset-md-2 col-12 mb-60">
+				<div class="slider-youtube">
+					{% for vdo in data.ourBrandVideos %}
+					<div>
+						<div class="embed-responsive embed-responsive-16by9">
+							<iframe class="embed-responsive-item yt-player" src="https://www.youtube.com/embed/{{vdo.videoId}}?controls=1&rel=0&enablejsapi=1"></iframe>
+						</div>
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+			{% endif %}
+
+			<div class="col-12 brand-pro-detail">
+				{{data.getDescription|raw}}
+				{% if app.request.get('id') == 1 %}
+				<div class="pro pro-1">
+					<div class="row">
+						<div class="col-md-6 mb-3">
+							<img src="/elleair/images/products/goon/info01.jpg" />
+						</div>
+						<div class="col-md-6 mb-5">
+							<img src="/elleair/images/products/goon/info02.jpg" />
+						</div>
+						<div class="col-md-12 col-lg-8 offset-lg-2 text-center">
+							<h4 class="mb-4">
+								*ผ้าอ้อมแต่ละยี่ห้ออาจมีขนาดและประสิทธิภาพในการรองรับน้ำที่แตกต่างกันทั้งนี้ควรพิจารณาขนาดของผ้าอ้อมให้เหมาะสมกับน้ำหนักและรูปร่างของเด็กน้อย
+							</h4>
+						</div>
+					</div>
+
+					<div class="mb-3">
+						<img src="/elleair/images/products/goon/info03.jpg" />
+					</div>
+
+					<div class="mb-5 text-center">
+						<img src="/elleair/images/products/goon/tape01.jpg" />
+					</div>
+
+					<div class="row align-items-end text-center">
+						<div class="col-6 col-md-6 col-lg-3 mb-5">
+							<img src="/elleair/images/products/goon/tape-nb.jpg" />
+						</div>
+						<div class="col-6 col-md-6 col-lg-3 mb-5">
+							<img src="/elleair/images/products/goon/tape-s.jpg" />
+						</div>
+						<div class="col-6 col-md-6 col-lg-3 mb-5">
+							<img src="/elleair/images/products/goon/tape-m.jpg" />
+						</div>
+						<div class="col-6 col-md-6 col-lg-3 mb-5">
+							<img src="/elleair/images/products/goon/tape-l.jpg" />
+						</div>
+					</div>
+
+					<div class="mb-5 text-center">
+						<img src="/elleair/images/products/goon/tape02.jpg" />
+					</div>
+
+					<div class="row align-items-center mb-5 row-benefit">
+
+						<div class="col-md-6 mb-3">
+							<div class="media">
+								<img class="align-self-center mr-2" src="/elleair/images/products/goon/tape03.jpg">
+								<div class="media-body align-self-center">
+									<h4 class="mb-0">แถบสีฟ้า</h4>
+									<p class="mb-0">เมื่อมีการซึมซับของเหลวที่ผ้าอ้อม</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-6 mb-3">
+							<div class="media">
+								<img class="align-self-center mr-2" src="/elleair/images/products/goon/tape04.jpg">
+								<div class="media-body align-self-center">
+									<h4 class="mb-0">3D Dot Emboss</h4>
+									<p class="mb-0">สัมผัสนุ่มอ่อนโยนเหนือระดับ</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-6 mb-3">
+							<div class="media">
+								<img class="align-self-center mr-2" src="/elleair/images/products/goon/tape05.jpg">
+								<div class="media-body align-self-center">
+									<h4 class="mb-0">2 Steps block</h4>
+									<p class="mb-0">ช่วยป้องกันการรั่วซึม</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-6 mb-3">
+							<div class="media">
+								<img class="align-self-center mr-2" src="/elleair/images/products/goon/tape06.jpg">
+								<div class="media-body align-self-center">
+									<h4 class="mb-0">ลวดลายน่ารัก</h4>
+									<p class="mb-0">พี่ลีโอคุงมาสร้างสีสันสดใส</p>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+					<div class="mb-5 text-center">
+						<img src="/elleair/images/products/goon/pants01.jpg" />
+					</div>
+
+					<div class="row align-items-end text-center">
+						<div class="col-6 col-md-6 col-lg-3 mb-5">
+							<img src="/elleair/images/products/goon/pants-s.jpg" />
+						</div>
+						<div class="col-6 col-md-6 col-lg-3 mb-5">
+							<img src="/elleair/images/products/goon/pants-m.jpg" />
+						</div>
+						<div class="col-6 col-md-6 col-lg-3 mb-5">
+							<img src="/elleair/images/products/goon/pants-l.jpg" />
+						</div>
+						<div class="col-6 col-md-6 col-lg-3 mb-5">
+							<img src="/elleair/images/products/goon/pants-xl.jpg" />
+						</div>
+						<div class="col-6 col-md-6 col-lg-3 mb-5">
+							<img src="/elleair/images/products/goon/pants-xxl.jpg" />
+						</div>
+						<div class="col-6 col-md-6 col-lg-3 mb-5">
+							<img src="/elleair/images/products/goon/pants-xxxl.jpg" />
+						</div>
+					</div>
+
+					<div class="mb-5 text-center">
+						<img src="/elleair/images/products/goon/pants02.jpg" />
+					</div>
+
+					<div class="row align-items-center mb-5 row-benefit">
+
+						<div class="col-md-6 mb-4">
+							<div class="media">
+								<img class="align-self-center mr-2" src="/elleair/images/products/goon/pants03.jpg">
+								<div class="media-body align-self-center">
+									<h4 class="mb-0">ยืดขยาย สวมใส่ง่าย</h4>
+									<p class="mb-0">เหมาะกับสรีระของลูกน้อย</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-6 mb-4">
+							<div class="media">
+								<img class="align-self-center mr-2" src="/elleair/images/products/goon/pants04.jpg">
+								<div class="media-body align-self-center">
+									<h4 class="mb-0">เทปเก็บทิ้ง</h4>
+									<p class="mb-0">ง่ายต่อการใช้งาน</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-6 mb-4">
+							<div class="media">
+								<img class="align-self-center mr-2" src="/elleair/images/products/goon/pants05.jpg">
+								<div class="media-body align-self-center">
+									<h4 class="mb-0">แผ่นระบายอากาศ</h4>
+									<p class="mb-0">ช่วยระบายอากาศรอบทิศทาง</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-6 mb-4">
+							<div class="media">
+								<img class="align-self-center mr-2" src="/elleair/images/products/goon/pants06.jpg">
+								<div class="media-body align-self-center">
+									<h4 class="mb-0">ลวดลายน่ารัก</h4>
+									<p class="mb-0">พี่ลีโอคุงมาสร้างสีสันน่ารักสดใส</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-6 mb-4">
+							<div class="media">
+								<img class="align-self-center mr-2" src="/elleair/images/products/goon/pants07.jpg">
+								<div class="media-body align-self-center">
+									<h4 class="mb-0">ช่องการซึมซับตรงกลาง</h4>
+									<p class="mb-0">ที่ช่วยซึมซับของเหลวอย่างรวดเร็ว</p>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+				{% endif %}
+
+				{% if app.request.get('id') == 3 %}
+				<div class="pro pro-3">
+					<div class="pro-title1 mb-20">Fairy Wings ( แฟรี่วิงส์ )</div>
+					<div class="mb-20">
+						มาพร้อมปีกที่สัมผัสนุ่มด้วย Soft Fit Wings กระซับ และด้วยแถบกาวแน่นพิเศษ ไม่ห่อตัว ไม่เลื่อนหลุด
+						มั่นใจได้ทุกการเคลื่อนไหว และยังมีผิวหน้า Active Dot ช่วยในการซึมซับ และแห้งสบายอีกด้วย
+						ยังเพิ่มเติมความน่ารักสดใสให้น่าใช้ยิ่งขึ้นด้วยลาย Rilakkuma
+					</div>
+					<div class="text-center mb-30">
+						<img src="{{asset('/elleair/images/products/elis/fairy-wings.jpg')}}" class="pc" />
+						<img src="{{asset('/elleair/images/products/elis/fairy-wings-m.jpg')}}" class="m" />
+					</div>
+
+					<div class="pro-title1 mb-20">Extra Slim 0.1 ( เอ็กซ์ตร้าสลิม 0.1 )</div>
+					<div class="mb-20">
+						บางเฉียบเพียง 0.1 ให้ความรู้สึก บางเบา ... อิสระเหมือนไม่ได้ใส่ มีผิวหน้า Active Dot ช่วยในการซึมซับ
+						และแห้งสบาย ไม่ห่อตัว ไม่เลื่อนหลุด ด้วยแถบกาวแน่นพิเศษ ให้อิสระทุกย่างก้าว พกความมั่นใจได้ตลอดวัน
+					</div>
+					<div class="text-center mb-30">
+						<img src="{{asset('/elleair/images/products/elis/extra-slim.jpg')}}" class="pc" />
+						<img src="{{asset('/elleair/images/products/elis/extra-slim-m.jpg')}}" class="m" />
+					</div>
+
+					<div class="pro-title1 mb-20">Sensitive Care ( เซนซิทีฟแคร์ )</div>
+					<div class="mb-20">
+						ผ้าอนามัยสำหรับสาวผิวแพ้ง่ายและผิวบอบบาง มีนวัตกรรม Air Cushion ที่มีเส้นใยละเอียดอ่อนพิเศษ
+						ผลิตจาก Natural Cotton 100% ให้สัมผัสที่อ่อนโยน ระคายเคือง ไร้กังวลเรื่องการซึมเปื้อน ด้วยผิวหน้า
+						Locked Emboss และด้วยแถวกาวแน่นพิเศษ ไม่ว่าจะขยับท่าไหน ก็ไม่เลื่อนหลุด
+					</div>
+					<div class="text-center mb-30">
+						<img src="{{asset('/elleair/images/products/elis/sensitive-care.jpg')}}" class="pc" />
+						<img src="{{asset('/elleair/images/products/elis/sensitive-care-m.jpg')}}" class="m" />
+					</div>
+
+					<div class="pro-title1 mb-20">Smooth & Dry ( สมูธแอนด์ดราย )</div>
+					<div class="mb-20">
+						เรียบเนียนเมื่อสัมผัส แห้งสบายเมื่อสวมใส่ เพราะระบายอากาศได้ดีด้วยแผ่นระบายอากาศด้านหลัง
+						และให้สัมผัสเนียนนุ่มที่ช่วยลดการเสียดสี ไม่ทำให้ระคายเคือง นุ่มกระชับ ติดแน่น ไม่ห่อตัว มั่นใจได้ทั้งวัน
+						ไม่เคยหวั่นแม้วันมามาก
+					</div>
+					<div class="text-center mb-30">
+						<img src="{{asset('/elleair/images/products/elis/smooth-dry.jpg')}}" class="pc" />
+						<img src="{{asset('/elleair/images/products/elis/smooth-dry-m.jpg')}}" class="m" />
+					</div>
+
+				</div>
+				{% endif %}
+			</div>
+
+			{#<div class="col-12 mb-30">
+
+				<div class="about-detail">
+
+					<img src="{{asset('elleair/images/about/p03.png')}}" class="about-logo" />
+					<p>
+						GOO.N stands for “Good Nappy” which means “Good Diaper" It is from the Japanese word グーン which means “The strong growth” GOO.N produces the baby diaper which has the soft touch as the hands of mother to protect the delicate skin from irritation.
+					</p>
+					<p>
+						So, the baby will grow up freshly and be ready to learn the new things. Because your baby has to wear a diaper all days which the delicate skin has to contact with the diaper’ surface through this time. Mother sometimes is very busy with the housework and the job outside and has less time to be with the baby than the diaper.
+					</p>
+					<p>
+						GOO.N is aware of this problem. Thus, we conduct the research and produce the soft and gentle diaper as the touch of the mother. Because GOO.N gives the first priority to the baby, we always think about what the baby and the mother need and try to respond to their needs for the laugh and joy of the baby and be ready to learn without irritation.
+					</p>
+				</div>
+
+			</div>
+
+			<div class="col-12">
+				<ul class="about-icon-link">
+					<li>
+						<img src="{{asset('elleair/images/about/p04.png')}}" />
+						>> <a href="http://www.goon-thailand.com" target="_blank">BRAND SITE</a>
+					</li>
+					<li>
+						<img src="{{asset('elleair/images/about/p05.png')}}" />
+						>> <a href="https://www.facebook.com/GoonDiaperTH" target="_blank">GOO.N Facebook</a>
+					</li>
+				</ul>
+			</div>#}
+		</div>
+	</div>
+</div>
+
+<div class="about-product" ng-app="productApp" ng-controller="productController">
+	<div class="container">
+		<div class="section-title text-center pb-50 bg-none">
+			<h1>PRODUCT INFORMATION</h1>
+		</div>
+
+		<div class="ng-cloak" ng-repeat="product_cat in product_cats" ng-if="product_cat.Id > 0">
+			<h2 class="section-title-pro">{{'{{product_cat.Title}}'}}</h2>
+			<p class="mb-30">
+				GOO.N stands for “Good Nappy” which means “Good Diaper" It is from the Japanese word グーン which means “The strong growth” GOO.N produces the baby diaper which has the soft touch as the hands of mother to protect the delicate skin from irritation.
+			</p>
+
+			<div class="pro-wrap mb-50">
+				<div class="row ml-0 mr-0">
+					<!-- loop -->
+					<div class="col-6 col-md-4 col-lg-3 pr-0 pl-0" ng-repeat="product in getProductCatsData(product_cat.Id)">
+						<div class="pro-item">
+							<div class="img">
+								<img ng-show='product.ImagePath.length > 0' ng-src="{{'{{product.ImagePath}}'}}" />
+							</div>
+							<ul>
+								<li class="title">
+									{{'{{product.Title}}'}}
+								</li>
+								<li class="type" ng-show='product.ProductTypeTitle.length > 0'>
+									<span style="background-image: url({{'{{goon_api_url}}'}}{{'{{product.ProductTypeIcon}}'}});"></span>
+									{% trans %}product_title.type{% endtrans %} : <b>{{'{{product.ProductTypeTitle}}'}}</b>
+								</li>
+								<li class="package" ng-show='product.Amount.length > 0'>
+									<span></span>
+									{% trans %}product_title.package{% endtrans %} : <b>{{'{{product.Amount}}'}} {{'{{product.ProductPackageTypeTitle}}'}}</b>
+								</li>
+								<li class="weight" ng-show='product.ProductWeightTitle.length > 0'>
+									<span></span>
+									{% trans %}product_title.weight{% endtrans %} : <b>{{'{{product.ProductWeightTitle}}'}}</b>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<!-- end loop -->
+				</div>
+			</div>
+		</div>
+
+		{#
+		<h2 class="section-title-pro">GOO.N Premium</h2>
+		<p class="mb-30">
+			GOO.N stands for “Good Nappy” which means “Good Diaper" It is from the Japanese word グーン which means “The strong growth” GOO.N produces the baby diaper which has the soft touch as the hands of mother to protect the delicate skin from irritation.
+		</p>
+
+		<div class="pro-wrap mb-50">
+			<div class="row ml-0 mr-0">
+				{% for i in 1..8 %}
+				<div class="col-6 col-md-4 col-lg-3 pr-0 pl-0">
+					<div class="pro-item">
+						<div class="img">
+							<img src="{{asset('elleair/images/products/NB20.png')}}" />
+						</div>
+						<ul>
+							<li class="title">
+								GOO.N baby diaper Tape type Regular pack NB size (For New Born baby)
+							</li>
+							<li class="type Tape">
+								Type : <b>Tape</b>
+							</li>
+							<li class="package">
+								Package : <b>20 pcs</b>
+							</li>
+							<li class="weight">
+								Weight : <b>Born - 5kg</b>
+							</li>
+						</ul>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+
+		<h2 class="section-title-pro">GOO.N Premium</h2>
+		<p class="mb-30">
+			GOO.N stands for “Good Nappy” which means “Good Diaper" It is from the Japanese word グーン which means “The strong growth” GOO.N produces the baby diaper which has the soft touch as the hands of mother to protect the delicate skin from irritation.
+		</p>
+
+		<div class="pro-wrap mb-50">
+			<div class="row ml-0 mr-0">
+				{% for i in 1..8 %}
+				<div class="col-6 col-md-4 col-lg-3 pr-0 pl-0">
+					<div class="pro-item">
+						<div class="img">
+							<img src="{{asset('elleair/images/products/NB20.png')}}" />
+						</div>
+						<ul>
+							<li class="title">
+								GOO.N baby diaper Tape type Regular pack NB size (For New Born baby)
+							</li>
+							<li class="type Tape">
+								Type : <b>Tape</b>
+							</li>
+							<li class="package">
+								Package : <b>20 pcs</b>
+							</li>
+							<li class="weight">
+								Weight : <b>Born - 5kg</b>
+							</li>
+						</ul>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+
+		<h2 class="section-title-pro">GOO.N Friend</h2>
+		<p class="mb-30">
+			GOO.N stands for “Good Nappy” which means “Good Diaper" It is from the Japanese word グーン which means “The strong growth” GOO.N produces the baby diaper which has the soft touch as the hands of mother to protect the delicate skin from irritation.
+		</p>
+
+		<div class="pro-wrap">
+			<div class="row ml-0 mr-0">
+				{% for i in 1..8 %}
+				<div class="col-6 col-md-4 col-lg-3 pr-0 pl-0">
+					<div class="pro-item">
+						<div class="img">
+							<img src="{{asset('elleair/images/products/FP3-S11.jpg')}}" />
+						</div>
+						<ul>
+							<li class="title">
+								GOO.N Friend baby diaper Pants type Regular pack S size
+							</li>
+							<li class="type Pants">
+								Type : <b>Pants</b>
+							</li>
+							<li class="package">
+								Package : <b>11 pcs</b>
+							</li>
+							<li class="weight">
+								Weight : <b>4kg - 8kg</b>
+							</li>
+						</ul>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+		#}
+	</div>
+</div>
+
+<!-- News Section Start -->
+{#{% include 'ProjectBundle:' ~ view_main ~':_news.html.twig' %} #}
+<!-- News Section End -->
+{% endblock %}
+
+{% block javascripts_body %}
+	{{ parent() }}
+	<script>
+		var tag = document.createElement('script');
+		tag.id = 'iframe-demo';
+		tag.src = 'https://www.youtube.com/iframe_api';
+		var firstScriptTag = document.getElementsByTagName('script')[0];
+		firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+		var player;
+		function onYouTubeIframeAPIReady() {
+			var elems1 = document.getElementsByClassName('yt-player');
+			for(var i = 0; i < elems1.length; i++) {
+
+				player = new YT.Player(elems1[i], {
+					events: {
+						//'onReady': onPlayerReady,
+						'onStateChange': onPlayerStateChange
+					}
+				});
+			}
+		}
+
+		function onPlayerReady(event) {
+
+		}
+
+		function handleVideo(playerStatus) {
+			if (playerStatus == -1) {
+				// unstarted
+				$('.slider-youtube').slick('slickPause');
+			} else if (playerStatus == 0) {
+				// ended
+				$('.slider-youtube').slick('slickPlay');
+
+			} else if (playerStatus == 1) {
+				// playing = green
+				$('.slider-youtube').slick('slickPause');
+			} else if (playerStatus == 2) {
+				// paused = red
+				$('.slider-youtube').slick('slickPlay');
+			} else if (playerStatus == 3) {
+				// buffering = purple
+			} else if (playerStatus == 5) {
+				// video cued
+			}
+		}
+		function onPlayerStateChange(event) {
+			handleVideo(event.data);
+		}
+
+		$(function() {
+			$('.slider-youtube').slick({
+				slidesToShow: 1,
+				slidesToScroll: 1,
+				autoplay: true,
+				autoplaySpeed: 5000,
+				pauseOnFocus: true,
+				pauseOnHover: true,
+				dots: true,
+				infinite: true,
+				adaptiveHeight: true,
+				arrows: false
+			});
+
+		});
+
+		$('.slider-youtube').on('beforeChange', function(event, slick, currentSlide, nextSlide){
+			$('.yt-player').each(function(){
+				this.contentWindow.postMessage('{"event":"command","func":"' + 'pauseVideo' + '","args":""}', '*')
+			});
+		});
+
+	</script>
+
+	{% set locals = app.request.locale %}
+	{% if locals == 'th' %}
+		{% set lang = 'th' %}
+	{% else %}
+		{% set lang = 'en' %}
+	{% endif  %}
+
+	{% set arr_cate = [] %}
+	{% if data.category|length > 0 %}
+		{% for item in data.category %}
+			{% set arr_cate = arr_cate|merge([item.Id]) %}
+		{% endfor %}
+	{% endif %}
+
+	<script>
+		var productApp = angular.module('productApp',[]);
+		productApp.factory('product_data', ['$http', function product_data($http){
+		  return {
+			api_product_data: function(product_cat){
+			  return $http({
+				method:'GET',
+				url:'http://www.goon-thailand.com/{{lang}}/api/product-all-data',
+				params: {'product_cat':product_cat},
+				headers: {'Content-Type':'application/x-www-form-urlencoded'
+			  } });
+			}
+		  };
+		}]);
+
+		productApp.controller('productController', ['$scope', 'product_data', function($scope, product_data){
+			$scope.goon_api_url = 'http://www.goon-thailand.com';
+			$scope.products = {};
+			var product_cat = '{{arr_cate|join(',')}}';
+			product_data.api_product_data(product_cat)
+			.then(function onSuccess(response) {
+				var data = response.data;
+				$scope.product_cats = data.product_cats;
+				$scope.product_weights = data.product_weights;
+				$scope.product_sizes = data.product_sizes;
+				$scope.product_types = data.product_types;
+				$scope.products = data.products;
+				$scope.cat_products = data.cat_products;
+			}).catch(function onError(response) {
+
+			});
+
+			$scope.getProductCatsData = function(cats_id) {
+				if(cats_id){
+					var product_cat_obj = $scope.products.filter(function(node) {
+						return node.ProductCatId == cats_id;
+					});
+					return product_cat_obj;
+				}
+			}
+
+		}]);
+	</script>
+
+{% endblock %}

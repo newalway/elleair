@@ -1,0 +1,95 @@
+{% extends "ProjectBundle:"~ view_layout ~":layout.html.twig" %}
+
+{% block title %}{% if category %} {{category.getTitle}}{% else %}{% trans %}menu.news.pr{% endtrans %}{% endif %} | {{ parent() }}{% endblock %}
+{% block news_active %}active{% endblock %}
+
+{% block breadcrumb_bg %}{% if category %}{{asset(category.image)}}{% else %}{{asset('elleair/images/banner/banner-pr-csr-2.png')}}{% endif %}{% endblock %}
+{% block breadcrumb_title %}{% if category %} {{category.getTitle}}{% else %}{% trans %}menu.news.pr{% endtrans %}{% endif %}{% endblock %}
+{% block breadcrumb %}
+<li><a href="{{path('news')}}">{% trans %}menu.news.pr{% endtrans %}</a></li>
+{% if category %}<li class="active"> {{category.getTitle}}</li>{% endif %}
+{% endblock %}
+
+{% block breadcrumb_data_opacity %}4{% endblock %}
+{% block breadcrumb_data_overlay %}blue{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+{% endblock %}
+{% block content %}
+<!-- News Section Start -->
+
+<div class="news-section pt-100 pb-35">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-12 mb-50">
+                <div class="row">
+                    {% for data in paginated.currentpageresults %}
+
+                    <!-- News Start -->
+                    <div class="news col-12 col-md-6 col-lg-4 mb-50">
+                        <!-- Image -->
+                        <a href="{{path('news_detail',{'id':data.id,'slug':data.getTitle|slug})}}" class="image"><img src="{{asset(data.image) | imagine_filter('img_370x250')}}" alt="{{data.getTitle}}" /></a>
+                        <!-- Content -->
+                        <div class="content">
+                            <h3><a href="{{path('news_detail',{'id':data.id,'slug':data.getTitle|slug})}}">{{data.getTitle}}</a></h3>
+
+                            <!-- Meta -->
+                            <div class="meta">
+								{#{% if data.ourBrand %}
+									{% if data.ourBrand.imageLabel %}
+		                            <a href="{{path('news_detail',{'id':data.id,'slug':data.getTitle|slug})}}" class="meta-item">
+		                                <img src="{{data.ourBrand.imageLabel}}" alt="{{data.getTitle|slug}}" />
+		                            </a>
+									{% endif %}
+		                        {% endif %}#}
+                                <span class="meta-item"><i class="fa fa-calendar"></i>{{ data.publicDate|date("d.m.Y") }}</span>
+                            </div>
+                            <p class="shot-desc">{{data.getShortDesc|nl2br }}</p>
+                            <a href="{{path('news_detail',{'id':data.id,'slug':data.getTitle|slug})}}" class="btn btn-sm btn-red">read more</a>
+                        </div>
+                    </div>
+                    <!-- News End -->
+                    {% endfor %}
+
+
+                    <!-- Page Pagination Start -->
+                    <!-- <div class="page-pagination justify-content-center col-12">
+                        <ul>
+                            <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
+                            <li class="active"><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+                        </ul>
+                    </div>-->
+                    <!-- Page Pagination End -->
+                    {% if paginated.havetopaginate %}
+                    <div class="page-pagination justify-content-center col-12">
+                    		{{pagerfanta(paginated,'twitter_bootstrap4_translated_elleair')}}
+
+                    </div>
+                    {% endif %}
+
+                </div>
+            </div>
+
+            <!-- Sidebar Wrap Start -->
+            {#<div class="sidebar-wrap col-lg-4 col-12 mb-50">
+
+                {% include "ProjectBundle:"~ view_main ~":_sidebar_news.html.twig" %}
+
+            </div>#}
+            <!-- Sidebar Wrap End -->
+
+        </div>
+    </div>
+</div>
+<!-- News Section End -->
+
+{% endblock %}
+
+{% block javascripts_body %}
+    {{ parent() }}
+
+{% endblock %}

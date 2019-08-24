@@ -1,0 +1,183 @@
+{% extends "ProjectBundle:"~ view_layout ~":layout.html.twig" %}
+
+{% block title %} {{ parent() }}{% endblock %}
+{% block hr_active %}active{% endblock %}
+{% block applicant_form_active %}active{% endblock %}
+
+{% block breadcrumb_bg %}{{asset('elleair/images/banner/page-banner-bg02.jpg')}}{% endblock %}
+{% block breadcrumb_data_overlay %}blue{% endblock %}
+{% block breadcrumb_data_opacity %}6{% endblock %}
+{% block breadcrumb_title %}{% trans %}menu.hr.recruitment{% endtrans %}{% endblock %}
+{% block breadcrumb %}
+    <li class="active"><a>{% trans %}menu.hr.recruitment{% endtrans %}</a></li>
+    {#<li class="active">{% trans %}menu.applicant.form{% endtrans %}</li>#}
+{% endblock %}
+
+
+{% block javascripts %}
+	{{ parent() }}
+{% endblock %}
+{% block content %}
+<!-- News Section Start -->
+<style media="screen">
+    .btn-no-background{
+        background-color: transparent;
+        border: 1px solid #e2dfdf;
+    }
+    .btn-no-background::before {
+        background-color: transparent;
+    }
+</style>
+<div class="join-us-section pt-100 pb-35">
+    <div class="container">
+        <!-- Section Title Start -->
+        <div class="section-title bg-none pb-20 pt-40">
+            <h1 class="text-center">{% trans %}elleair.join_us.title_paragraph_1{% endtrans %}</h1>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 mb-50 text-md-center">
+                {% trans %}elleair.join_us.paragraph_1{% endtrans %}
+            </div>
+        </div>
+
+        <div class="image-for-be-part pb-20">
+            <div class="row">
+                <div class="col-md-4  p-2"><img src="{{asset('elleair/images/recuit/p01.png')}}"/></div>
+                <div class="col-md-4  p-2"><img src="{{asset('elleair/images/recuit/p02.png')}}"/></div>
+                <div class="col-md-4  p-2"><img src="{{asset('elleair/images/recuit/p03.png')}}"/></div>
+            </div>
+        </div>
+
+        <div class="section-title bg-none pb-20 pt-40">
+            <h1 class="text-center">{% trans %}elleair.join_us.title_paragraph_2{% endtrans %}</h1>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 mb-50 text-md-center">
+                {% trans %}elleair.join_us.paragraph_2{% endtrans %}
+            </div>
+        </div>
+
+        <div class="join-us-form">
+            <div class="col-md-12">
+                {% for flashMessage in app.session.flashbag.get('notice')%}
+                    <div class="alert alert-success alert-dismissible">
+                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                      <i class="icon fa fa-check"></i> {{ flashMessage|raw }}
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="accordion" id="accordion">
+            {% if paginated.currentpageresults|length > 0%}
+                {% for data in paginated.currentpageresults %}
+                    <div class="card">
+                        <div class="card-header">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse-{{data.id}}">
+                                {{ data.getTitle }}
+                                ({% if data.jobPositionOpening == 11 %}
+                                    -  {% trans %}elleair.join_us.position{% endtrans %}
+                                {% else %}
+                                    {{ data.jobPositionOpening }} {% trans %}elleair.join_us.position{% endtrans %}
+                                {% endif %})
+                            </a>
+                        </div>
+                        <div id="collapse-{{data.id}}" class="card-collapse collapse in">
+                            <div class="card-body">
+                                {% if data.getDescription %}
+                                <div class="responsibility">
+                                    <h4 class="card-title">{% trans %}elleair.join_us.responsibility{% endtrans %}</h4>
+                                    <div class="p-3">{{ data.getDescription|raw }}</div>
+                                </div>
+                                {% endif %}
+
+                                {% if data.getQualification %}
+                                <div class="qualification">
+                                    <h4 class="card-title">{% trans %}elleair.join_us.qualification{% endtrans %}</h4>
+                                    <div class="p-3">{{ data.getQualification|raw }}</div>
+                                </div>
+                                {% endif %}
+
+                                {% if data.getBenefitWelfares %}
+                                <div class="benefit-welfares">
+                                    <h4 class="card-title">{% trans %}elleair.join_us.benefit_welfares{% endtrans %}</h4>
+                                    <div class="p-3">{{ data.getBenefitWelfares|raw }}</div>
+                                </div>
+                                {% endif %}
+
+                                {% if data.jobLocation %}
+                                <div class="benefit-welfares">
+                                    <h4 class="card-title">{% trans %}elleair.join_us.localtion{% endtrans %}</h4>
+                                    <div class="p-3">
+                                        {% if data.jobLocation.getTitle %}
+                                        <div class="mb-2">{{ data.jobLocation.getTitle }}</div>
+                                        {% endif %}
+                                        {% if data.jobLocation.getAddress %}
+                                        <div class="mb-2">{{ data.jobLocation.getAddress|raw }}</div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                {% endif %}
+
+                                <div class="p-3">
+                                    <a href="{{path('apply_jobs_create', {'job_id': data.id})}}">
+                                        <button type="submit" class="btn-class">
+                                            <span>
+                                                {% trans %}elleair.join_us.apply{% endtrans %}
+                                                 <!-- <i class="fa fa-caret-right"></i> -->
+                                            </span>
+                                        </button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                {% endfor %}
+            {% else %}
+                <div class="p-3">
+                    <div class="col-md-12 text-center">
+                        <div class="card">
+                            <div class="m-3">
+                                {% trans %}elleair.join_us.position_closed{% endtrans %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+            </div>
+            {#{% if file_name %}
+            <a href="{{path('download_fileJob_available')}}">
+                <button type="button" class="btn text-dark btn-no-background" style="cursor:pointer">
+                    <img src="{{asset('images/icon_pdf.png')}}" alt="" width="80px">
+                    {{file_name}}
+
+                </button>
+            </a>
+            <div class="last-update p-5">
+                <p>last updated : {{file_update|date('d-m-Y')}} </p>
+            </div>
+            {% endif %}#}
+        </div>
+
+    </div>
+</div>
+<!-- News Section End -->
+
+{% endblock %}
+
+{% block javascripts_body %}
+    {{ parent() }}
+
+    <script>
+        $(function() {
+            $('.collapse').on('shown.bs.collapse', function(e) {
+                var headerH = $('.header-section .header-bottom').height() + 70;
+                var $panel = $(this).attr("id");
+                $('html, body').animate({
+                    scrollTop: $('#' + $panel).offset().top - headerH
+                }, 1000);
+            });
+        });
+    </script>
+{% endblock %}

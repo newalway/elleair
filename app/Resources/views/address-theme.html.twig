@@ -1,0 +1,30 @@
+{% block AddressType_label %}{% endblock %}
+{% block AddressType_errors %}{% endblock %}
+
+{#{% block AddressType_row %}
+<div class="col-md-12">
+  {{ form_label(form) }}
+  {{ form_widget(form) }}
+  {{ form_errors(form) }}
+</div>
+{% endblock %}#}
+
+{% block AddressType_widget %}
+<div class="row">
+  {% for address in form.children %}
+    <div class="form-group col-md-4">
+        {{ form_label(address) }}
+        {{ form_widget(address) }}
+        <p class="help-block"><div class="form-messege error">  {{ form_errors(address) }}</div></p>
+
+    </div>
+  {% endfor %}
+</div>
+
+{% endblock %}
+
+{#{% block AddressesType_widget %}
+    <div class="col-md-4">
+        {{ form_widget(form.address) }}
+    </div>
+{% endblock %}#}

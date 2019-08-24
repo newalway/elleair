@@ -1,0 +1,176 @@
+{% extends "ProjectBundle:"~ view_layout ~":layout.html.twig" %}
+
+{% block title %}{% trans %}menu.home{% endtrans %} | {{ parent() }}{% endblock %}
+{% block home_active %}active{% endblock %}
+
+{% block banner_section %}
+	<!-- Hero Section Start -->
+	<div class="hero-section">
+		<!-- Hero Slider Start -->
+		<div class="hero-slider">
+			{% for banner in banners %}
+			<!-- Hero Item Start -->
+            <div class="hero-item">
+				<img src="{{asset(banner.getImage)}}" alt="Banner" class="w-100">
+            </div>
+			<!-- Hero Item End -->
+			{% endfor %}
+		</div><!-- Hero Slider End -->
+	</div><!-- Hero Section End -->
+{% endblock %}
+
+{% block content %}
+	{% if our_brands %}
+	<div class="logo-section pt-40 pb-40">
+		<div class="container">
+			<div class="owl-carousel owl-theme owl-logo">
+				{% for our_brand in our_brands %}
+				{% if our_brand.imageLogo %}
+			    <div class="item">
+					<a href="{{path('our_brand',{'id':our_brand.id,'slug':our_brand.getTitle|slug})}}">
+			    		<img src="{{asset(our_brand.imageLogo) | imagine_filter('our_brand_150x100')}}" alt="{{our_brand.getTitle}}">
+					</a>
+			    </div>
+				{% endif %}
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+	{% endif %}
+    <div class="know-section pt-70 pb-70">
+        <div class="container">
+			<div class="content">
+				<div class="row">
+					<div class="col-lg-3 col-md-4 col-12">
+						<img src="{{asset('elleair/images/logo-1.png')}}" alt="Logo">
+					</div>
+					<div class="col-lg-9 col-md-8 col-12">
+						<p>
+							{% trans %}elleair.about_elleair_index_page {% endtrans %}
+						</p>
+						<a href="{{path('about')}}" class="btn btn-lg btn-green">
+							<span>{% trans %}elleair.about_elleair_index_btn{% endtrans %}</span>
+						</a>
+					</div>
+				</div>
+			</div>
+        </div>
+    </div>
+
+	<div class="feature-section pt-55 pb-70 home-our-brand-section">
+        <div class="container">
+            <div class="row">
+
+                <!-- Section Title Start -->
+                <div class="section-title text-center col-12 pb-50 pt-40 bg-none">
+                    <h1>{% trans %}elleair.our_brand{% endtrans %}</h1>
+                    <p>{% trans %}elleair.our_brand_short_description{% endtrans %}</p>
+                </div><!-- Section Title End -->
+				{% if our_brands %}
+				{% for our_brand in our_brands %}
+                <!-- Start-->
+                <div class="col-lg-4 col-md-6 col-12">
+					<div class="feature text-center mb-30">
+						<!-- Icon -->
+						<div class="image">
+							{% if our_brand.image %}
+							<a href="{{path('our_brand',{'id':our_brand.id,'slug':our_brand.getTitle|slug})}}"><img src="{{asset(our_brand.image) | imagine_filter('our_brand_370x250')}}" alt="{{our_brand.getTitle}}" /></a>
+							{% endif %}
+						</div>
+						<!-- Content -->
+						<div class="content">
+							<h4><a href="{{path('our_brand',{'id':our_brand.id,'slug':our_brand.getTitle|slug})}}">{{our_brand.getTitle}}</a></h4>
+							<p>{{our_brand.getShortDesc}}</p>
+						</div>
+					</div>
+                </div>
+				<!-- End-->
+				{% endfor %}
+				{% endif %}
+            </div>
+        </div>
+    </div>
+
+	<div class="content-section-area pt-80 pb-90 home-about-section" style="background-image: url({{asset('elleair/images/bg/bg03.jpg')}})" data-overlay="theme-color" data-opacity="5">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 col-sm-12 col-lg-6">
+					<div class="calculate-left mt-3">
+						<h2>ABOUT US</h2>
+						<p>
+							Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+						</p>
+						<a href="{{path('about')}}" class="btn btn-lg btn-red">
+							<span>Know more</span>
+						</a>
+					</div>
+				</div>
+				<div class="col-md-12 col-sm-12 col-lg-6">
+					<div class="calculate-right">
+						<img src="{{asset('elleair/images/about/p01.png')}}" alt="">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="mission-area bg-gray pt-60 pb-90 bg-tree-mini home-recuit-section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 col-lg-6 col-sm-12">
+					<div class="mission-area-content pt-35">
+						<h2>RECRUITMENT</h2>
+						<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration passages of Lorem Ipsum available, but the majority suffered alteration passages of Lorem Ipsum available,</p>
+						<ul class="cr-liststyle-1">
+							<li>There are many variations of passages majority suffered alteration of Lorem</li>
+							<li>Many variations of passages of majority suffered </li>
+							<li>Variations of passages one of Lorem majority suffered alteration</li>
+						</ul>
+						<a href="{{path('join_us')}}" class="cr-btn">
+							<span>Know more</span>
+						</a>
+					</div>
+				</div>
+				<div class="col-md-12 col-lg-6 col-sm-12">
+					<div class="mission-area-thumb">
+						<img class="wow fadeInRight" src="{{asset('elleair/images/recuit/p01.png')}}" alt="">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- News Section Start -->
+    {% include 'ProjectBundle:' ~ view_main ~':_news.html.twig' %}
+	<!-- News Section End -->
+
+{% endblock %}
+
+{% block javascripts_body %}
+	{{ parent() }}
+	<script>
+		$(function() {
+			$('.owl-logo').owlCarousel({
+				loop:true,
+				margin:10,
+				dots:false,
+				nav:true,
+				responsiveClass:true,
+				responsive:{
+					0:{
+						items:2,
+						margin:5
+					},
+					600:{
+						items:3
+					},
+					1000:{
+						items:5,
+						loop:false
+					}
+				},
+				navText: ['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>']
+			})
+		});
+	</script>
+{% endblock %}

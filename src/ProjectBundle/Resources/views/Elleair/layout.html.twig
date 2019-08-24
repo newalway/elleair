@@ -1,0 +1,230 @@
+{% extends 'ProjectBundle::base.html.twig' %}
+
+{% block title %}{% trans %}project.title_bar_name{% endtrans %}{% endblock %}
+{% block html_description %}{% endblock %}
+{% block html_keywords %}{% endblock %}
+
+{% block html_meta %}
+{{ parent() }}
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="shortcut icon" type="image/x-icon" href="{{asset('elleair/images/favicon.ico')}}" />
+
+	{% stylesheets output='css/complied/elleair.css'
+		'elleair/assets/css/bootstrap_4.min.css'
+		'elleair/assets/css/icon-font.min.css'
+		'elleair/assets/css/icofont.min.css'
+		'elleair/assets/css/lightgallery.min.css'
+		'elleair/assets/css/plugins.css'
+		'elleair/assets/css/jqvmap.min.css'
+		'OwlCarousel2-2.2.1/dist/assets/owl.carousel.min.css'
+		'OwlCarousel2-2.2.1/dist/assets/owl.theme.default.min.css'
+		'elleair/assets/css/style.css'
+		%}
+		<link rel="stylesheet" href="{{ asset_url }}">
+	{% endstylesheets %}
+	<link rel="stylesheet" href="{{asset('elleair/stylesheets/style-web.min.css')}}" type="text/css">
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+
+{% endblock %}
+
+{% block body %}
+	<!-- Main Wrapper Start -->
+	<div class="main-wrapper {% block main_class %}{% endblock %}">
+	    <!-- Header Section Start -->
+	    <div class="header-section">
+	        <!-- Header Bottom Start -->
+	        <div class="header-bottom header-sticky side-padding">
+	            <div class="container">
+	                <div class="row">
+	                    <!-- Logo Start -->
+	                    <div class="col">
+	                        <a href="{{path('homepage')}}" class="logo"><img src="{{asset('elleair/images/logo-1.png')}}" alt="Logo" style="height:60px;"></a>
+	                    </div><!-- Logo End -->
+	                    <!-- Main Menu Start -->
+	                    <div class="col d-none d-lg-block">
+	                        <div class="main-menu">
+	                            <nav>
+	                                <ul>
+										<li class="{% block home_active %}{% endblock %}"><a href="{{path('homepage')}}">{% trans %}menu.home{% endtrans %}</a></li>
+
+										<li class="{% block about_active %}{% endblock %} menu-item-has-children"><a href="{{path('about')}}">{% trans %}menu.about.us{% endtrans %}</a>
+											<ul class="sub-menu">
+	                                            <li class="{% block introduction_active %}{% endblock %}"><a href="{{path('about')}}">{% trans %}menu.introduction{% endtrans %}</a></li>
+	                                            <li class="{% block corporate_active %}{% endblock %}"><a href="{{path('corporate')}}">{% trans %}menu.corporate.motto{% endtrans %}</a></li>
+	                                        </ul>
+										</li>
+
+										<li class="{% block business_outline_active %}{% endblock %}"><a href="{{path('business_outline')}}">{% trans %}menu.business.outline{% endtrans %}</a></li>
+
+										<li class="{% block our_brands_active %}{% endblock %} menu-item-has-children"><a>{% trans %}menu.our.brands{% endtrans %}</a>
+
+
+											 	{% set our_brand_id = app.request.attributes.get('id') %}
+
+
+											{{ render(controller('ProjectBundle:Main:_menu_our_brands',{'our_brand_id':our_brand_id})) }}
+										</li>
+
+										<li class="{% block news_active %}{% endblock %} menu-item-has-children"><a>{% trans %}menu.news.pr{% endtrans %}</a>
+											<ul class="sub-menu">
+	                                            {% if (app.request.attributes.get('cate_id') == null )%}
+														{% set id = app.request.attributes.get('id') %}
+												{% else %}
+													{% set id = app.request.attributes.get('cate_id') %}
+												{% endif %}
+
+												{% set parameter = {'_route': app.request.attributes.get('_route'),'id': id} %}
+												{{ render(controller('ProjectBundle:Main:_menu_news',{ 'parameter':parameter})) }}
+											</ul>
+										</li>
+
+										<li class="{% block hr_active %}{% endblock %}"><a href="{{path('join_us')}}">{% trans %}menu.hr.recruitment{% endtrans %}</a></li>
+
+										<li class="{% block contact_active %}{% endblock %}"><a href="{{path('contact')}}">{% trans %}menu.contact.us{% endtrans %}</a></li>
+	                                </ul>
+	                            </nav>
+	                        </div>
+	                    </div><!-- Main Menu End -->
+	                    <!-- Header Button Start -->
+	                    <div class="col">
+	                        <div class="header-flat">
+								<a href="{{path(app.request.attributes.get('_route'), (app.request.attributes.get('_route_params')|merge({'_locale': 'en'}))|merge(app.request.query.all))}}" title="English"><img src="{{ asset('images/flat-united-states-of-america.png')}}" alt="English" /></a>
+								<a href="{{path(app.request.attributes.get('_route'), (app.request.attributes.get('_route_params')|merge({'_locale': 'th'}))|merge(app.request.query.all))}}" title="ภาษาไทย"><img src="{{ asset('images/flat-thailand.png')}}" alt="ภาษาไทย" /></a>
+	                        </div>
+	                    </div>
+						<!-- Header Button End -->
+	                    <!-- Mobile Menu Start -->
+	                    <div class="mobile-menu d-block d-lg-none col"></div><!-- Mobile Menu End -->
+	                </div>
+	            </div>
+	        </div><!-- Header Bottom End -->
+	    </div><!-- Header Section End -->
+
+
+		{% block banner_section %}
+		<!-- Page Banner Section Start -->
+	    <div class="page-banner-section {% block breadcrumb_class %}{% endblock %}" style="background-image: url({% block breadcrumb_bg %}{% endblock %})" data-overlay="{% block breadcrumb_data_overlay %}theme-color{% endblock %}" data-opacity="{% block breadcrumb_data_opacity %}8{% endblock %}">
+	        <div class="container">
+	            <div class="page-banner row align-items-center">
+
+	                <!-- Page Title -->
+	                <div class="col-lg-6 col-12">
+	                    <h1 class="page-title">{% block breadcrumb_title %}{% endblock %}</h1>
+	                </div>
+
+	                <!-- Page Breadcrumb -->
+	                <div class="col-lg-6 col-12">
+	                    <ul class="page-breadcrumb">
+	                        <li><a href="{{path('homepage')}}">{% trans %}menu.home{% endtrans %}</a></li>
+							{% block breadcrumb %}
+                        	<li class="active">{% block breadcrumb_title2 %}{% endblock %}</li>
+							{% endblock %}
+	                    </ul>
+	                </div>
+
+	            </div>
+	        </div>
+	    </div>
+		<!-- Page Banner Section End -->
+		{% endblock %}
+
+		{% block content %}{% endblock %}
+	    <!-- Footer Top Section Start -->
+	    <div class="footer-top-section bg-cyan-blue pt-30 pb-10">
+	        <div class="container">
+	            <div class="row">
+
+	                <!-- Footer Widget Start -->
+	                <div class="footer-widget text-left col-lg-4 col-md-6 col-12 mb-30">
+	                    <h3 class="title">Contact <span>Us</span></h3>
+	                    <ul class="contact-list">
+	                        <li><span>{% trans %}footer.phone{% endtrans %}:</span> <a href="tel:+66022593841">+66(0)2-259-3841</a></li>
+							<li><span>{% trans %}footer.fax{% endtrans %}:</span> +66(0)2-259-3843</li>
+	                        {#<li><span>{% trans %}footer.email{% endtrans %}:</span> <a href="mailto:info@examplel.com">info@examplel.com</a></li>#}
+	                        <li><span>{% trans %}footer.address{% endtrans %}:</span> {% trans %}elleair.footer.address{% endtrans %}</li>
+	                    </ul>
+	                </div>
+					<!-- Footer Widget End -->
+
+	                <!-- Footer Widget Start -->
+	                <div class="footer-widget text-center col-lg-4 col-md-6 col-12 mb-30">
+	                    <div class="footer-about">
+	                        <!-- Logo -->
+	                        <img src="/elleair/images/footer/logo_00.png" alt="Footer Logo">
+	                        <p>Combined with a handful of model sente nce structures, to generate Lorem Ipsum whilooks reasonable. The generated Lorem.</p>
+	                        <!-- Social -->
+	                        <div class="footer-social">
+	                            <a href="#"><i class="fa fa-facebook"></i></a>
+	                            <a href="#"><i class="fa fa-twitter"></i></a>
+	                            <a href="#"><i class="fa fa-instagram"></i></a>
+	                            <a href="#"><i class="fa fa-linkedin"></i></a>
+	                        </div>
+	                    </div>
+	                </div>
+					<!-- Footer Widget End -->
+
+	                <!-- Footer Widget Start -->
+	                <div class="footer-widget text-right col-lg-4 col-md-6 col-12 mb-30">
+	                    <div class="footer-link">
+							<ul>
+								<li><a href="#" target="_blank"><img src="{{asset('elleair/images/footer/bn_goonfacebook.png')}}" /></a></li>
+								<li><a href="#" target="_blank"><img src="{{asset('elleair/images/footer/bn_cosme_list.png')}}" /></a></li>
+								<li><a href="#" target="_blank"><img src="{{asset('elleair/images/footer/bn_youtube.png')}}" /></a></li>
+							</ul>
+
+	                    </div>
+	                </div>
+					<!-- Footer Widget End -->
+
+	            </div>
+	        </div>
+	    </div><!-- Footer Top Section End -->
+
+		<div class="footer-middle-section pt-15 pb-10">
+			<img src="{{asset('elleair/images/footer/icon01.png')}}" />
+			<img src="{{asset('elleair/images/footer/icon02.png')}}" />
+		</div>
+
+	    <!-- Footer Bottom Section Start -->
+	    <div class="footer-bottom-section">
+	        <div class="container">
+	            <div class="row">
+	                <!-- Footer Copyright -->
+	                <div class="footer-copyright text-center col-12">
+	                    <p>© 2019 Elleair International (Thailand) Co.,Ltd., All Right Reserved.</p>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+		<!-- Footer Bottom Section End -->
+
+	</div>
+
+{% endblock %}
+
+{% block javascripts_body %}
+	{{ parent() }}
+	{% javascripts output='js/complied/elleair_08072019.js'
+		'elleair/assets/js/vendor/modernizr-3.6.0.min.js'
+		'elleair/assets/js/vendor/jquery-1.12.0.min.js'
+		'elleair/assets/js/popper.min.js'
+		'elleair/assets/js/bootstrap.min.js'
+		'elleair/assets/js/plugins.js'
+		'elleair/assets/js/jquery.vmap.min.js'
+		'elleair/assets/js/maps/jquery.vmap.world.js'
+		'@angular'
+		'@owl_carousel'
+	%}
+	<script src="{{ asset_url }}"></script>
+	{% endjavascripts %}
+	<script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+	<script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+	<script src="{{ asset('elleair/assets/js/main.js') }}"></script>
+		<script src="{{ asset('javascripts/jquery.collection.js') }}"></script>{# use for clone element #}
+{% endblock %}

@@ -1,0 +1,7 @@
+<ul class="sub-menu">
+{% if our_brands %}
+    {% for our_brand in our_brands %}
+    <li {% if our_brand.id == our_brand_id %} class="active"{% endif %}><a href="{{path('our_brand',{'id':our_brand.id,'slug':our_brand.getTitle|slug})}}">{{our_brand.getTitle}}</a></li>
+    {% endfor %}
+{% endif %}
+</ul>

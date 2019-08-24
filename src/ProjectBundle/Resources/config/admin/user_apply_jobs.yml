@@ -1,0 +1,40 @@
+admin_user_apply_jobs:
+  path: /
+  defaults: {_controller: ProjectBundle:AdminUserApplyJobs:index}
+  requirements:
+    _method: get
+
+admin_user_apply_jobs_view:
+  path: /{id}/view
+  defaults: {_controller: ProjectBundle:AdminUserApplyJobs:view}
+  requirements:
+    _method: get
+    id: \d+
+
+admin_user_apply_jobs_delete:
+  path: /{id}/delete
+  defaults: {_controller: ProjectBundle:AdminUserApplyJobs:delete}
+  requirements:
+    _method: get
+    id: \d+
+
+admin_user_apply_jobs_group_delete:
+  path: /group-delete
+  defaults: {_controller: ProjectBundle:AdminUserApplyJobs:group_delete}
+  requirements:
+    _method: post
+
+
+admin_user_apply_jobs_file_download:
+  path: /{id}/download
+  defaults: {_controller: ProjectBundle:AdminUserApplyJobs:download}
+  requirements:
+    _method: get
+    id: \d+
+
+admin_user_apply_jobs_pdf_download:
+  path: /{id}/pdf/download
+  defaults: {_controller: ProjectBundle:AdminUserApplyJobs:pdf}
+  requirements:
+    _method: get
+    id: \d+

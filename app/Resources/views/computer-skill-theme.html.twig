@@ -1,0 +1,20 @@
+{% block ComputerSkillType_label %}{% endblock %}
+{% block ComputerSkillType_errors %}{% endblock %}
+
+
+
+{% block ComputerSkillType_widget %}
+<div class="row">
+    <div class="col-md-12">
+        {% for Cskill in form.children %}
+            <div class="m-3">
+                <b>{{ form_label(Cskill) }}</b>
+                {{ form_widget(Cskill) }}
+                <p class="help-block"><div class="form-messege error">  {{ form_errors(Cskill) }}</div></p>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+{% endblock %}

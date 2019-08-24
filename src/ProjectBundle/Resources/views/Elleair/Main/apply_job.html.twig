@@ -1,0 +1,376 @@
+{% form_theme form
+'jquery.collection.html.twig'
+'address-theme.html.twig'
+'fileupload-theme.html.twig'
+'language-skill-theme.html.twig'
+'computer-skill-theme.html.twig'
+'other-skill-theme.html.twig'
+%}
+{% form_theme form.educational 'educational-theme.html.twig'%}
+{% form_theme form.workExperience 'work-experience-theme.html.twig'%}
+{% form_theme form.training 'training-theme.html.twig' %}
+
+{% extends "ProjectBundle:"~ view_layout ~":layout.html.twig" %}
+
+
+{% block title %} {{ parent() }}{% endblock %}
+{% block hr_active %}active{% endblock %}
+{% block applicant_form_active %}active{% endblock %}
+
+{% block breadcrumb_bg %}{{asset('elleair/images/banner/page-banner-bg02.jpg')}}{% endblock %}
+{% block breadcrumb_data_overlay %}blue{% endblock %}
+{% block breadcrumb_data_opacity %}6{% endblock %}
+{% block breadcrumb_title %}{% trans %}menu.hr.recruitment{% endtrans %}{% endblock %}
+{% block breadcrumb %}
+    <li class="active"><a>{% trans %}menu.hr.recruitment{% endtrans %}</a></li>
+    {#<li class="active">{% trans %}menu.applicant.form{% endtrans %}</li>#}
+{% endblock %}
+
+
+{% block javascripts %}
+	{{ parent() }}
+{% endblock %}
+{% block content %}
+<!-- News Section Start -->
+<style media="screen">
+    .btn-no-background{
+        background-color: transparent;
+        border: 1px solid #e2dfdf;
+    }
+    .btn-no-background::before {
+        background-color: transparent;
+    }
+</style>
+<div class="join-us-section pt-100 pb-35">
+    <div class="container">
+        <div class="row">
+            <!-- Section Title Start -->
+            <div class="section-title bg-none  col-12 pb-20 pt-40">
+                <h1 class="text-center">{% trans %}elleair.join_us.title_paragraph_3{% endtrans %}</h1>
+            </div>
+            <p class="text-left pb-50">
+                {% trans %}elleair.join_us.paragraph_3{% endtrans %}
+            </p>
+            {% if app.request.get('job_id') is defined %}
+                {% set job_id = app.request.get('job_id') %}
+            {% else %}
+                {% set job_id = null %}
+            {% endif %}
+            <div class="col-lg-12 ml-auto mr-auto">
+                    <form id="data_form" class="join-us-form " action="{{path('apply_jobs_create', {'job_id': app.request.get('job_id')})}}" method="post"  enctype="multipart/form-data" class="form-horizontal">
+                        {{form_widget(form._token)}}
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h3>ข้อมูลผู้สมัคร (Applicant Information)</h3><hr>
+                            </div>
+
+                            <div class="form-group col-md-12">
+                                <div class="card">
+                                    <div class="row m-3">
+                                        <div class="form-group  col-md-12">
+                                            {{form_label(form.jobs)}}
+                                            {{form_widget(form.jobs, {'id' : 'jobs'})}}
+                                            <p class="help-block"><div class="form-messege error">{{form_errors(form.jobs)}}</div></p>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                          {{form_label(form.firstName)}}
+                                          {{form_widget(form.firstName, {'id' : 'firstName'})}}
+                                          <p class="help-block"><div class="form-messege error">{{form_errors(form.firstName)}}</div></p>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                          {{form_label(form.lastName)}}
+                                          {{form_widget(form.lastName, {'id' : 'lastName'})}}
+                                          <p class="help-block"><div class="form-messege error">{{form_errors(form.lastName)}}</div></p>
+                                        </div>
+                                        <div class="form-group col-6">
+                                            {{form_label(form.phone)}}
+                                            {{form_widget(form.phone, {'id' : 'phone'})}}
+                                            <p class="help-block"><div class="form-messege error">{{form_errors(form.phone)}}</div></p>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            {{form_label(form.email)}}
+                                            {{form_widget(form.email, {'id' : 'email'})}}
+                                            <p class="help-block"><div class="form-messege error">{{form_errors(form.email)}}</div></p>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                        {{ form_widget(form.address) }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <h3>ข้อมูลด้านทักษะ (Career Qualifications )</h3><hr>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <h4 class="text-center mt-2 mb-3"> ประวัติการศึกษา (Educational Record)</h4>
+                                <div class="card">
+                                    {{ form_widget(form.educational) }}
+                                </div>
+                            </div>
+
+                            <div class="form-group col-md-12">
+                                <h4 class="text-center mt-3 mb-3">ความรู้ภาษาต่างประเทศ (Language Skill)</h4>
+                                <div class="card">
+                                    {{form_widget(form.languageSkill)}}
+                                </div>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <h4 class="text-center mt-3 mb-3">ทักษะอื่น ๆ (Competency)</h4>
+                                <div class="card">
+                                    {{form_widget(form.computerSkill)}}
+                                    {{form_widget(form.otherSkill)}}
+                                </div>
+
+                            </div>
+                            <div class="form-group col-md-12">
+                                <h4 class="text-center mt-3 mb-3">ประวัติการฝึกอบรม  (Training Records)</h4>
+                                <div class="card">
+                                    {{form_widget(form.training)}}
+                                </div>
+
+                            </div>
+                            <div class="form-group col-md-12">
+                                <h4 class="text-center mt-3 mb-3">ประวัติการทำงาน (Work Experience)</h4>
+                                <div class="card">
+                                    {{form_widget(form.workExperience)}}
+                                    <div class="m-3">
+                                            <div class="alert alert-danger">
+                                                ** กรุณาระบุสถานที่ทำงานล่าสุดขึ้นก่อน (Please identify the latest company on top.)
+                                            </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group col-md-12">
+                                <h4 class="text-center mb-3">อัปโหลดไฟล์ (Attach File)</h4>
+                                <div class="card">
+                                    <div class="m-3">
+                                        {{form_widget(form.attachFile)}}
+                                        ** Maximum 10 uploads File and Maximum 2048 KB./File <br>
+                                        ** Additional files Resume, Transcript, TOEIC Test, Certificate, etc.<br>
+                                        ** หากท่านมี Resume หรือ CV กรุณาแนบเอกสารมาด้วย (if you have Resume or CV , please attach file.)
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+
+                              <div class="col-md-12 text-center" style="height:50px;">
+                                  <button type="submit" class="btn-class">
+                                      <span>
+                                          {% trans %}contact.send{% endtrans %}
+                                           <!-- <i class="fa fa-caret-right"></i> -->
+                                      </span>
+                                  </button>
+                              </div>
+                        </div>
+                    </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- News Section End -->
+<style media="screen">
+.join-us-form input[type=radio] {
+    width: auto;
+ height: auto;
+ display: inline;
+ margin:15px;
+    color: #666666;
+    -ms-transform: scale(1.5); /* IE 9 */
+-webkit-transform: scale(1.5); /* Chrome, Safari, Opera */
+transform: scale(1.5);
+}
+</style>
+{% endblock %}
+
+{% block javascripts_body %}
+    {{ parent() }}
+    <script type="text/javascript">
+
+    $('.address-collection').collection({
+        prototype_name: '{{ form.address.vars.prototype.vars.name }}',
+        name_prefix: '{{form.address.vars.prototype.vars.full_name}}',
+    	// add: '<a class="btn btn-success" href="#"><span class="glyphicon glyphicon-plus"></span>Add slider videos</a>',
+    	// remove: '<a class="btn btn-danger" href="#"><span class="glyphicon glyphicon-trash"></span></a>',
+    	allow_up: false,
+    	allow_down: false,
+    	allow_duplicate: false,
+    	add_at_the_end: true,
+    	allow_delete: false,
+    	min: 2,
+    	max: 2,
+        after_init: function(collection) {
+            var countCollation = collection[0].children.length;
+            $.each(collection[0].children, function (index, value) {
+                var id = document.getElementById(value.id);
+                if(id){
+                    var label = id.children[0].children[7].children[0];//form_label element
+                    var input = id.children[0].children[7].children[1];//form_widget element
+
+                    if (index == 0){
+                        $(id).prepend( "<h4> {% trans %} elleair.jobs_register.title.address_title_current{% endtrans %}</h4>");
+                        var idInput1 = document.getElementById(input.id);
+                        $(idInput1).val("current");
+                        $(label).hide();
+
+                    }else if (index == 1){
+                        $(id).prepend( "<h4>{% trans %} elleair.jobs_register.title.address_title_permanent{% endtrans %}</h4>");
+                        var idInput2 = document.getElementById(input.id);
+                        $(idInput2).val("permanent");
+                        $(label).hide();
+
+                    }
+                }
+            });
+        }
+    });
+    $('.file-upload-collection').collection({
+        prototype_name: '{{ form.attachFile.vars.prototype.vars.name }}',
+        name_prefix: '{{form.attachFile.vars.prototype.vars.full_name}}',
+        // add: '<a href="#" class="btn btn-default">Add</a>',
+    	allow_up: false,
+    	allow_down: false,
+    	allow_duplicate: false,
+    	add_at_the_end: false,
+    	allow_delete: false,
+    	min: 1,
+    	max: 10,
+    });
+    $('.language-skill-collection').collection({
+        prototype_name: '{{ form.languageSkill.vars.prototype.vars.name }}',
+        name_prefix: '{{form.languageSkill.vars.prototype.vars.full_name}}',
+        // add: '<a href="#" class="btn btn-default">Add</a>',
+        allow_up: false,
+        allow_down: false,
+        allow_duplicate: false,
+        add_at_the_end: false,
+        allow_delete: false,
+        min: 2,
+        max: 2,
+        after_init: function(collection) {
+            var countCollation = collection[0].children.length;
+            $.each(collection[0].children, function (index, value) {
+                var id = document.getElementById(value.id);
+                if(id){
+                    var label = id.children[0].children[0];//form_label element
+                    var input = id.children[0].children[0].children[1].children[0];//form_widget element
+                    //console.log(label);
+
+                    if (index == 0){
+                        $(label).prepend("<b class='form-group m-3 pull-left'>ภาษาอังกฤษ (English)</b>");
+                        var idInput1 = document.getElementById(input.id);
+                        $(idInput1).val("english");
+                        // $(label).hide();
+
+                    }else if (index == 1){
+                        $(label).prepend( "<b class='form-group m-3 pull-left'>ภาษาไทย (Thai)</b>");
+                        var idInput2 = document.getElementById(input.id);
+                        $(idInput2).val("thai");
+                        // $(label).hide();
+
+                    }
+                }
+            });
+        }
+    });
+    $('.educational-collection').collection({
+        prototype_name: '{{ form.educational.vars.prototype.vars.name }}',
+        name_prefix: '{{form.educational.vars.prototype.vars.full_name}}',
+        elements_selector: 'tbody > tr',
+        elements_parent_selector: '%id% tbody',
+        add: '<a class="btn btn-success m-3" href="#"><i class="fa fa-plus"></<i>Add </a>',
+        remove: '<a class="m-3 btn btn-danger" href="#"><i class="fa fa-trash" aria-hidden="true"></i></a>',
+        allow_up: false,
+    	allow_down: false,
+    	allow_duplicate: false,
+    	add_at_the_end: true,
+    	// allow_delete: true,
+        min: 3,
+        max: 10,
+        after_init: function(collection) {
+            var countCollation = collection[0].children.length;
+            $.each(collection[0].children, function (index, value) {
+                var id = document.getElementById(value.id);
+                // if(id){
+                //     var label = id.children[0].children[0];//form_label element
+                //     var input = id.children[0].children[0].children[1].children[0];//form_widget element
+                //     //console.log(label);
+                //
+                //     if (index == 0){
+                //         $(label).prepend("<b class='form-group p-2 pull-left'>ภาษาอังกฤษ (English)</b>");
+                //         var idInput1 = document.getElementById(input.id);
+                //         $(idInput1).val("english");
+                //         // $(label).hide();
+                //
+                //     }else if (index == 1){
+                //         $(label).prepend( "<b class='form-group p-2 pull-left'>ภาษาไทย (Thai)</b>");
+                //         var idInput2 = document.getElementById(input.id);
+                //         $(idInput2).val("thai");
+                //         // $(label).hide();
+                //
+                //     }
+                // }
+            });
+        }
+    });
+    $('.computer-skill-collection').collection({
+        prototype_name: '{{ form.computerSkill.vars.prototype.vars.name }}',
+        name_prefix: '{{form.computerSkill.vars.prototype.vars.full_name}}',
+        allow_up: false,
+        allow_down: false,
+        allow_duplicate: false,
+        add_at_the_end: false,
+        // allow_delete: true,
+        min: 1,
+        max: 1,
+    });
+    $('.other-skill-collection').collection({
+        prototype_name: '{{ form.otherSkill.vars.prototype.vars.name }}',
+        name_prefix: '{{form.otherSkill.vars.prototype.vars.full_name}}',
+        allow_up: false,
+        allow_down: false,
+        allow_duplicate: false,
+        add_at_the_end: false,
+        // allow_delete: true,
+        min: 1,
+        max: 1,
+    });
+
+    $('.work-experience-collection').collection({
+        prototype_name: '{{ form.workExperience.vars.prototype.vars.name }}',
+        name_prefix: '{{form.workExperience.vars.prototype.vars.full_name}}',
+        elements_selector: 'tbody > tr',
+        elements_parent_selector: '%id% tbody',
+        add: '<a class="btn btn-success m-3" href="#"><i class="fa fa-plus"></<i>Add </a>',
+        remove: '<a class="m-3 btn btn-danger" href="#"><i class="fa fa-trash" aria-hidden="true"></i></a>',
+        allow_up: false,
+    	allow_down: false,
+    	allow_duplicate: false,
+    	add_at_the_end: true,
+    	// allow_delete: true,
+        min: 3,
+        max: 20,
+    });
+
+    $('.training-collection').collection({
+        prototype_name: '{{ form.training.vars.prototype.vars.name }}',
+        name_prefix: '{{form.training.vars.prototype.vars.full_name}}',
+        elements_selector: 'tbody > tr',
+        elements_parent_selector: '%id% tbody',
+        add: '<a class="btn btn-success m-3" href="#"><i class="fa fa-plus"></<i>Add </a>',
+        remove: '<a class="m-3 btn btn-danger" href="#"><i class="fa fa-trash" aria-hidden="true"></i></a>',
+        allow_up: false,
+        allow_down: false,
+        allow_duplicate: false,
+        add_at_the_end: true,
+        // allow_delete: true,
+        min: 3,
+        max: 20,
+    });
+
+    </script>
+{% endblock %}

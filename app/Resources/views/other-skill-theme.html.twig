@@ -1,0 +1,20 @@
+{% block OtherSkillType_label %}{% endblock %}
+{% block OtherSkillType_errors %}{% endblock %}
+
+
+
+{% block OtherSkillType_widget %}
+<div class="row">
+    <div class="col-md-12">
+        {% for Oskill in form.children %}
+            <div class="m-3">
+                <b>{{ form_label(Oskill) }}</b>
+                {{ form_widget(Oskill) }}
+                <p class="help-block"><div class="form-messege error">  {{ form_errors(Oskill) }}</div></p>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+{% endblock %}

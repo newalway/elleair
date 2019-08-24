@@ -1,0 +1,50 @@
+admin_jobs:
+  path: /
+  defaults: {_controller: ProjectBundle:AdminJobs:index}
+  methods:  [GET]
+
+admin_jobs_new:
+  path: /new
+  defaults: {_controller: ProjectBundle:AdminJobs:new}
+  methods:  [GET,POST]
+
+admin_jobs_edit:
+  path: /{id}/edit
+  defaults: {_controller: ProjectBundle:AdminJobs:edit}
+  methods:  [GET,POST]
+  requirements:
+    id: \d+
+
+admin_jobs_delete:
+  path: /{id}/delete
+  defaults: {_controller: ProjectBundle:AdminJobs:delete}
+  methods:  [GET]
+  requirements:
+    id: \d+
+
+admin_jobs_group_delete:
+  path: /group-delete
+  defaults: {_controller: ProjectBundle:AdminJobs:group_delete}
+  methods:  [POST]
+
+admin_jobs_sort:
+  path: /sort
+  defaults: {_controller: ProjectBundle:AdminJobs:sort}
+  methods:  [GET]
+
+admin_jobs_sort_prosess:
+  path: /sort-prosess
+  defaults: {_controller: ProjectBundle:AdminJobs:sort_prosess}
+  methods:  [POST]
+
+admin_jobs_group_enable:
+  path: /group-enable
+  defaults: {_controller: ProjectBundle:AdminJobs:group_enable}
+  requirements:
+    _method: post
+
+admin_jobs_group_disable:
+  path: /group-disable
+  defaults: {_controller: ProjectBundle:AdminJobs:group_disable}
+  requirements:
+    _method: post

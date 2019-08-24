@@ -1,0 +1,113 @@
+{% extends "ProjectBundle:"~ view_layout ~":layout.html.twig" %}
+
+{% block title %}{% trans %}menu.corporate.motto{% endtrans %} | {{ parent() }}{% endblock %}
+{% block about_active %}active{% endblock %}
+{% block corporate_active %}active{% endblock %}
+
+{% block breadcrumb_bg %}{{asset('elleair/images/bg/bg04.jpg')}}{% endblock %}
+{% block breadcrumb_title %}{% trans %}menu.corporate.motto{% endtrans %}{% endblock %}
+{% block breadcrumb %}
+    <li><a href="{{path('about')}}">{% trans %}menu.about.us{% endtrans %}</a></li>
+    <li class="active">{% trans %}menu.corporate.motto{% endtrans %}</li>
+{% endblock %}
+
+{% block breadcrumb_data_opacity %}{% endblock %}
+{% block breadcrumb_data_overlay %}{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+{% endblock %}
+
+{% block content %}
+    <div class="corporate-section pt-100 pb-65">
+        <div class="container">
+            <!--  -->
+            <div class="section-title2 text-center mb-30">
+                <h2>{% trans %}elleair.corporate.title{% endtrans %}</h2>
+                <p>{% trans %}elleair.corporate.sub_title{% endtrans %}</p>
+            </div>
+
+            <p>
+                {% if app.request.locale == 'th' %}
+                    {% set lang = 'th' %}
+                {% else %}
+                    {% set lang = 'en' %}
+                {% endif %}
+                <img src="{{asset('elleair/images/corporate/kumkwah-' ~ lang ~ '.png')}}" />
+            </p>
+            
+            <p>{% trans %}elleair.corporate.paragraph_1{% endtrans %}</p>
+
+            <!--  -->
+            <div class="section-title2 text-center mt-70 mb-30">
+                <h2>{% trans %}elleair.corporate.title_paragraph_2{% endtrans %}</h2>
+                <p>{% trans %}elleair.corporate.sub_title_paragraph_2{% endtrans %}</p>
+            </div>
+            <p>{% trans %}elleair.corporate.paragraph_2{% endtrans %}</p>
+            <!--  -->
+            <div class="section-title2 text-center mt-70 mb-30">
+                <h2>{% trans %}elleair.corporate.title_paragraph_3{% endtrans %}</h2>
+                <p>{% trans %}elleair.corporate.sub_title_paragraph_3{% endtrans %}</p>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-20">
+                    <h4>{% trans %}elleair.corporate.head_title_paragraph_3_1{% endtrans %}</h4>
+                    {% trans %}elleair.corporate.paragraph_3_1{% endtrans %}
+                </div>
+                <div class="col-md-6 mb-20">
+                    <h4>{% trans %}elleair.corporate.head_title_paragraph_3_2{% endtrans %}</h4>
+                    {% trans %}elleair.corporate.paragraph_3_2{% endtrans %}
+                </div>
+                <div class="col-md-6 mb-20">
+                    <h4>{% trans %}elleair.corporate.head_title_paragraph_3_3{% endtrans %}</h4>
+                    {% trans %}elleair.corporate.paragraph_3_3{% endtrans %}
+                </div>
+                <div class="col-md-6 mb-20">
+                    <h4>{% trans %}elleair.corporate.head_title_paragraph_3_4{% endtrans %}</h4>
+                    {% trans %}elleair.corporate.paragraph_3_4{% endtrans %}
+                </div>
+            </div>
+
+            <!--  -->
+            <div class="section-title2 text-center mt-70 mb-30">
+                <h2>{% trans %}elleair.corporate.title2{% endtrans %}</h2>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-20">
+                    <h4>{% trans %}elleair.corporate.head_title2_1{% endtrans %}</h4>
+                    {% trans %}elleair.corporate.description_1{% endtrans %}
+                </div>
+                <div class="col-md-6 mb-20">
+                    <h4>{% trans %}elleair.corporate.head_title2_2{% endtrans %}</h4>
+                    {% trans %}elleair.corporate.description_2{% endtrans %}
+                </div>
+                <div class="col-md-6 mb-20">
+                    <h4>{% trans %}elleair.corporate.head_title2_3{% endtrans %}</h4>
+                    {% trans %}elleair.corporate.description_3{% endtrans %}
+                </div>
+                <div class="col-md-6 mb-20">
+                    <h4>{% trans %}elleair.corporate.head_title2_4{% endtrans %}</h4>
+                    {% trans %}elleair.corporate.description_4{% endtrans %}
+                </div>
+                <div class="col-md-6 mb-20">
+                    <h4>{% trans %}elleair.corporate.head_title2_5{% endtrans %}</h4>
+                    {% trans %}elleair.corporate.description_5{% endtrans %}
+                </div>
+                <div class="col-md-6 mb-20">
+                    <h4>{% trans %}elleair.corporate.head_title2_6{% endtrans %}</h4>
+                    {% trans %}elleair.corporate.description_6{% endtrans %}
+                </div>
+                <div class="col-md-6 mb-20">
+                    <h4>{% trans %}elleair.corporate.head_title2_7{% endtrans %}</h4>
+                    {% trans %}elleair.corporate.description_7{% endtrans %}
+                </div>
+                <div class="col-md-6 mb-20">
+                    <h4>{% trans %}elleair.corporate.head_title2_8{% endtrans %}</h4>
+                    {% trans %}elleair.corporate.description_8{% endtrans %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

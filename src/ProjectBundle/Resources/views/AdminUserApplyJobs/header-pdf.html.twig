@@ -1,0 +1,20 @@
+{% extends 'ProjectBundle::base.html.twig' %}
+
+{% block title %}sadsaffg | {{ parent() }}{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+{% endblock %}
+
+{% block body_class %}body-pdf{% endblock %}
+
+{% block body %}
+<div class="container pb-5">
+  <div class="col-md-12 text-center border-bottom">
+      <img src="{{ absolute_url(asset('elleair/images/logo.png')) }}" alt="elleair" /><br>
+      <h2>แบบฟอร์มใบสมัคร (Application Form)</h>
+      <h3 class="pb-2">Elleair International (Thailand) Co.,Ltd.</h3>
+  </div>
+  <!-- <hr> -->
+</div>
+{% endblock %}

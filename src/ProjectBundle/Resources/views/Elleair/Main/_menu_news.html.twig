@@ -1,0 +1,11 @@
+{#<li class="{% block pr_news_active %}{% endblock %}">#}
+    {#<a href="{{path('news')}}">{% trans %}menu.news{% endtrans %}</a>#}
+    <!-- <li><a href="{{path('news')}}">All</a></li> -->
+{% for news_category in news_categorys %}
+{# {% if news_category.id == cate_id %} class="active"{% endif %} #}
+    <li {% if news_category.id == cate_id %} class="active"{% endif %}><a href="{{path('news_category',{'cate_id':news_category.id,'slug':news_category.getTitle|slug})}}">{{news_category.getTitle}}</a></li>
+{% endfor %}
+
+
+
+{#</li>#}

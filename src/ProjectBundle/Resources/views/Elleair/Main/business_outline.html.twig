@@ -1,0 +1,118 @@
+{% extends "ProjectBundle:"~ view_layout ~":layout.html.twig" %}
+
+{% block title %}{% trans %}menu.business.outline{% endtrans %} | {{ parent() }}{% endblock %}
+{% block business_outline_active %}active{% endblock %}
+
+{% block breadcrumb_bg %}{{asset('elleair/images/banner/page-banner-bg03.jpg')}}{% endblock %}
+{% block breadcrumb_title %}{% trans %}menu.business.outline{% endtrans %}{% endblock %}
+{% block breadcrumb %}
+    <li class="active">{% trans %}menu.business.outline{% endtrans %}</li>
+{% endblock %}
+
+{% block breadcrumb_data_opacity %}4{% endblock %}
+{% block breadcrumb_data_overlay %}blue{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+{% endblock %}
+
+{% block content %}
+<div class="business-section pt-100 pb-65">
+    <div class="container">
+        <div class="section-title text-center pb-50 bg-none">
+            <h1>{% trans %}elleair.business_outline.title{% endtrans %}</h1>
+        </div>
+
+        <div class="detail">
+            <div class="row row-0 border-top border-right border-left">
+                <div class="col-md-3 bg-gray p-10 text-center border-bottom border-right">
+                    {% trans %}elleair.business_outline.company{% endtrans %}
+                </div>
+                <div class="col-md-9 p-10 border-bottom">
+                    {% trans %}elleair.business_outline.company_name{% endtrans %}
+                </div>
+
+                <div class="col-md-3 bg-gray p-10 text-center border-bottom">
+                        {% trans %}elleair.business_outline.set_up{% endtrans %}
+                </div>
+                <div class="col-md-9 p-10 border-bottom">
+                    {% trans %}elleair.business_outline.set_up_detail{% endtrans %}<br />
+                    <a href="https://www.daio-paper.co.jp/company/history-2010/" target="_blank">>&nbsp;{% trans %}elleair.business_outline.history{% endtrans %}</a>
+                </div>
+
+                <div class="col-md-3 bg-gray p-10 text-center border-bottom">
+                    {% trans %}elleair.business_outline.representative{% endtrans %}
+                </div>
+                <div class="col-md-9 p-10 border-bottom">
+                    {% trans %}elleair.business_outline.representative_name{% endtrans %}
+                </div>
+
+                <div class="col-md-3 bg-gray p-10 text-center border-bottom">
+                    {% trans %}elleair.business_outline.business_content.title{% endtrans %}
+                </div>
+                <div class="col-md-9 p-10 border-bottom">
+                    {% trans %}elleair.business_outline.business_content.b1{% endtrans %}<br />
+                    {% trans %}elleair.business_outline.business_content.b2{% endtrans %}<br />
+                    {% trans %}elleair.business_outline.business_content.b3{% endtrans %}<br />
+                    {% trans %}elleair.business_outline.business_content.b4{% endtrans %}<br />
+                    {% trans %}elleair.business_outline.business_content.b5{% endtrans %}
+                </div>
+
+                <div class="col-md-3 bg-gray p-10 text-center border-bottom">
+                    {% trans %}elleair.business_outline.capital{% endtrans %}
+                </div>
+                <div class="col-md-9 p-10 border-bottom">
+                    {% trans %}elleair.business_outline.capital_detail{% endtrans %}
+                </div>
+
+                <div class="col-md-3 bg-gray p-10 text-center border-bottom">
+                    {% trans %}elleair.business_outline.amount_of_sale.title{% endtrans %}
+                </div>
+                <div class="col-md-9 p-10 border-bottom">
+                    {% trans %}elleair.business_outline.amount_of_sale.detail_1{% endtrans %}<br />
+                    {% trans %}elleair.business_outline.amount_of_sale.detail_2{% endtrans %}
+                </div>
+
+                <div class="col-md-3 bg-gray p-10 text-center border-bottom">
+                    {% trans %}elleair.business_outline.employee.title{% endtrans %}
+                </div>
+                <div class="col-md-9 p-10 border-bottom">
+                    {% trans %}elleair.business_outline.employee.detail_1{% endtrans %}<br />
+                    {% trans %}elleair.business_outline.employee.detail_2{% endtrans %}<br />
+                    {% trans %}elleair.business_outline.employee.detail_3{% endtrans %}
+                </div>
+
+                <div class="col-md-3 bg-gray p-10 text-center border-bottom">
+                    {% trans %}elleair.business_outline.base.title{% endtrans %}
+                </div>
+                <div class="col-md-9 p-10 border-bottom">
+                        {% trans %}elleair.business_outline.base.detail_1{% endtrans %}<br />
+                    {% trans %}elleair.business_outline.base.detail_2{% endtrans %}<br />
+                    {% trans %}elleair.business_outline.base.detail_3{% endtrans %}<br />
+                    <a href="https://www.daio-paper.co.jp/company/base/" target="_blank">> {% trans %}elleair.business_outline.base.detail_4{% endtrans %}</a>
+                </div>
+
+                <div class="col-md-3 bg-gray p-10 text-center border-bottom">
+                    {% trans %}elleair.business_outline.group_company.title{% endtrans %}
+                </div>
+                <div class="col-md-9 p-10 border-bottom">
+                {% trans %}elleair.business_outline.group_company.detail_1{% endtrans %}<br />
+                    <a href="https://www.daio-paper.co.jp/company/group/" target="_blank">> {% trans %}elleair.business_outline.group_company.detail_2{% endtrans %}</a>
+                </div>
+
+                <div class="col-md-3 bg-gray p-10 text-center border-bottom">
+                    {% trans %}elleair.business_outline.main_product.title{% endtrans %}
+                </div>
+                <div class="col-md-9 p-10 border-bottom">
+                    {% trans %}elleair.business_outline.main_product.detail_1{% endtrans %}<br />
+                    {% trans %}elleair.business_outline.main_product.detail_2{% endtrans %}<br />
+                    <a href="https://www.daio-paper.co.jp/product/" target="_blank">> {% trans %}elleair.business_outline.main_product.detail_3{% endtrans %}</a>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% block AttachFileType_label %}{% endblock %}
+{% block AttachFileType_errors %}{% endblock %}
+
+
+
+{% block AttachFileType_widget %}
+<div class="row">
+    <div class="col-md-7">
+        {% for file in form.children %}
+            <div class="form-group">
+                {{ form_widget(file) }}
+                  <p class="help-block"><div class="form-messege error">  {{ form_errors(file) }}</div></p>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="col-md-5">
+        <a href="#" class="mr-1 collection-add btn btn-default" title="Add Attach File"><i class="fa fa-plus" aria-hidden="true"></i> Add</a>
+        <a href="#" class="mr-1 collection-remove btn btn-default" title="Delete Attach File"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
+    </div>
+    {#<div class="col-md-1">
+        <a href="#" class="collection-duplicate btn btn-default" title="Duplicate Attach File"><span class="glyphicon glyphicon-th-large"></span></a>
+    </div>#}
+</div>
+
+
+{% endblock %}

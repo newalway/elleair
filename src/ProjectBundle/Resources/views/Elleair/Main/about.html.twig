@@ -1,0 +1,328 @@
+{% extends "ProjectBundle:"~ view_layout ~":layout.html.twig" %}
+
+{% block title %}{% trans %}menu.about.us{% endtrans %} | {{ parent() }}{% endblock %}
+{% block about_active %}active{% endblock %}
+{% block introduction_active %}active{% endblock %}
+
+{% block breadcrumb_bg %}{{asset('elleair/images/bg/bg03.jpg')}}{% endblock %}
+{% block breadcrumb_title %}{% trans %}menu.about.us{% endtrans %}{% endblock %}
+{% block breadcrumb %}
+    <li class="active">{% trans %}menu.about.us{% endtrans %}</li>
+{% endblock %}
+
+{% block breadcrumb_data_opacity %}4{% endblock %}
+{% block breadcrumb_data_overlay %}blue{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+{% endblock %}
+
+{% block content %}
+<div class="candidate-section pt-100 pb-65">
+    <div class="container">
+        <div class="row align-items-center">
+
+            <div class="candidate-content col-lg-6 col-12 mb-30">
+                <h1 class="text-center">{% trans %}elleair.introduction.our_mission{% endtrans %}</h1>
+                <p style="color:#0B64A2">
+                    {% trans %}elleair.introduction.our_mission_description{% endtrans %}
+                </p>
+            </div>
+
+            <div class="col-lg-6 col-12 mb-30">
+                <img src="{{asset('elleair/images/about/p02-2.png')}}" alt="" class="img-fluid">
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="biography-section bg-theme pt-95 pb-100">
+    <div class="container">
+        <div class="row">
+
+            <!-- Section Title Start -->
+            <div class="section-title title-white text-center col-12 mb-70">
+                <h1>{% trans %}elleair.introduction.our_history{% endtrans %}</h1>
+                <p>{% trans %}elleair.introduction.our_history_description{% endtrans %}</p>
+            </div><!-- Section Title End -->
+
+            <div class="col-lg-10 col-12 ml-auto mr-auto">
+                <div class="timeline-wrap">
+                    <span class="timeline-proces"></span>
+                    <!-- Single Timeline Start -->
+                    <div class="timeline row">
+
+                        <!-- Date -->
+                        <div class="date col-md-6">
+                            <span class="dot"></span>
+                            <h4>{% trans %}elleair.introduction.year_2009.title{% endtrans %}</h4>
+                        </div>
+
+                        <!-- Content -->
+                        <div class="content col-md-6">
+                            <h4>{% trans %}elleair.introduction.year_2009.description{% endtrans %}</h4>
+                        </div>
+
+                    </div><!-- Single Timeline End -->
+
+                    <!-- Single Timeline Start -->
+                    <div class="timeline row">
+
+                        <!-- Date -->
+                        <div class="date col-md-6">
+                            <span class="dot"></span>
+                            <h4>{% trans %}elleair.introduction.year_2011.title{% endtrans %}</h4>
+                        </div>
+
+                        <!-- Content -->
+                        <div class="content col-md-6">
+                            <h4>{% trans %}elleair.introduction.year_2011.description{% endtrans %}</h4>
+                        </div>
+
+                    </div>
+					<!-- Single Timeline End -->
+
+                    <!-- Single Timeline Start -->
+                    <div class="timeline row">
+
+                        <!-- Date -->
+                        <div class="date col-md-6">
+                            <span class="dot"></span>
+                            <h4>{% trans %}elleair.introduction.year_2012.title{% endtrans %}</h4>
+                        </div>
+
+                        <!-- Content -->
+                        <div class="content col-md-6">
+                            <h4>{% trans %}elleair.introduction.year_2012.description{% endtrans %}</h4>
+                        </div>
+
+                    </div>
+					<!-- Single Timeline End -->
+
+                    <!-- Single Timeline Start -->
+                    <div class="timeline row">
+
+                        <!-- Date -->
+                        <div class="date col-md-6">
+                            <span class="dot"></span>
+                            <h4>{% trans %}elleair.introduction.year_2013.title{% endtrans %}</h4>
+                        </div>
+
+                        <!-- Content -->
+                        <div class="content col-md-6">
+                            <h4>{% trans %}elleair.introduction.year_2013.description{% endtrans %}</h4>
+                        </div>
+
+                    </div>
+					<!-- Single Timeline End -->
+
+                    <!-- Single Timeline Start -->
+                    <div class="timeline row">
+
+                        <!-- Date -->
+                        <div class="date col-md-6">
+                            <span class="dot"></span>
+                            <h4>{% trans %}elleair.introduction.year_2014.title{% endtrans %}</h4>
+                        </div>
+
+                        <!-- Content -->
+                        <div class="content col-md-6">
+                            <h4>{% trans %}elleair.introduction.year_2014.description{% endtrans %}</h4>
+                        </div>
+
+                    </div>
+					<!-- Single Timeline End -->
+
+                    <!-- Single Timeline Start -->
+                    <div class="timeline row">
+
+                        <!-- Date -->
+                        <div class="date col-md-6">
+                            <span class="dot"></span>
+                            <h4>{% trans %}elleair.introduction.year_2015.title{% endtrans %}</h4>
+                        </div>
+
+                        <!-- Content -->
+                        <div class="content col-md-6">
+                            <h4>{% trans %}elleair.introduction.year_2015.description{% endtrans %}</h4>
+                        </div>
+
+                    </div>
+					<!-- Single Timeline End -->
+
+                    <!-- Single Timeline Start -->
+                    <div class="timeline row">
+
+                        <!-- Date -->
+                        <div class="date col-md-6">
+                            <span class="dot"></span>
+                            <h4>{% trans %}elleair.introduction.year_2016.title{% endtrans %}</h4>
+                        </div>
+
+                        <!-- Content -->
+                        <div class="content col-md-6">
+                            <h4>{% trans %}elleair.introduction.year_2016.description{% endtrans %}</h4>
+                        </div>
+
+                    </div>
+					<!-- Single Timeline End -->
+
+                    <!-- Single Timeline Start -->
+                    <div class="timeline row">
+
+                        <!-- Date -->
+                        <div class="date col-md-6">
+                            <span class="dot"></span>
+                            <h4>{% trans %}elleair.introduction.year_2017.title{% endtrans %}</h4>
+                        </div>
+
+                        <!-- Content -->
+                        <div class="content col-md-6">
+                            <h4>{% trans %}elleair.introduction.year_2017.description{% endtrans %}</h4>
+                        </div>
+
+                    </div>
+					<!-- Single Timeline End -->
+
+                    <!-- Single Timeline Start -->
+                    <div class="timeline row">
+
+                        <!-- Date -->
+                        <div class="date col-md-6">
+                            <span class="dot"></span>
+                            <h4>{% trans %}elleair.introduction.year_2018.title{% endtrans %}</h4>
+                        </div>
+
+                        <!-- Content -->
+                        <div class="content col-md-6">
+                            <h4>{% trans %}elleair.introduction.year_2018.description{% endtrans %}</h4>
+                        </div>
+
+                    </div>
+					<!-- Single Timeline End -->
+
+                </div>
+            </div><!-- Biography Timeline End -->
+
+        </div>
+    </div>
+</div>
+
+<!-- Testimonial Section Start -->
+<div class="testimonial-section world-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 col-12 ml-auto mr-auto">
+
+                <!-- Testimonial Slider Start -->
+                <div class="testimonial-slider" style="background-image: url({{asset('elleair/images/bg/testimonial-bg.png')}})">
+
+                    <!-- Testimonial Item -->
+                    <div class="testimonial">
+                        <h2>{% trans %}elleair.introduction.company_name{% endtrans %}</h2>
+                        <p>{% trans %}elleair.introduction.company_description{% endtrans %}</p>
+                        <img src="{{asset('elleair/images/history/p01.png')}}"  />
+                    </div>
+
+                </div>
+				<!-- Testimonial Slider End -->
+
+            </div>
+        </div>
+    </div>
+</div><!-- Testimonial Section End -->
+
+<div class="mission-section bg-gray pt-100 pb-95">
+    <div class="container">
+        <div class="row align-items-center">
+            <!-- Mission Content Start -->
+            <div class="col-lg-6 col-12 order-lg-2">
+                <div class="mission-map" id="world-vmap"></div>
+            </div><!-- Mission Content End -->
+            <!-- Mission Content Start -->
+            <div class="mission-content col-lg-6 col-12">
+                <h2>{% trans %}elleair.introduction.our_area_business{% endtrans %}</h2>
+                <p>{% trans %}elleair.introduction.our_area_business_description_1{% endtrans %}</p>
+				<p>{% trans %}elleair.introduction.our_area_business_description_2{% endtrans %}</p>
+
+            </div><!-- Mission Content End -->
+        </div>
+    </div>
+</div>
+
+<div class="quality-section pt-50 pb-50" data-overlay="theme-color" data-opacity="10">
+	<div class="container">
+        <div class="section-title2 text-center pb-30 pt-40 mb-40">
+            <h2>{% trans %}elleair.introduction.standard_title{% endtrans %}</h2>
+        </div>
+
+		<div class="row align-items-center row-standard">
+            <!-- Standard 1 -->
+			<div class="col-12 col-md-4">
+                <img src="{{asset('elleair/images/history/iso-9001-2015.jpg')}}" class="img-fluid" />
+            </div>
+            <div class="col-12 col-md-7 offset-md-1">
+                <ul>
+                    <li>{% trans %}elleair.introduction.standard_iso_14001.title{% endtrans %}</li>
+                    <li>{% trans %}elleair.introduction.standard_iso_14001.detail{% endtrans %}</li>
+                </ul>
+            </div>
+            <!-- Standard 2 -->
+            <div class="col-12 col-md-4">
+                <img src="{{asset('elleair/images/history/iso-14001-2015.jpg')}}" class="img-fluid" />
+            </div>
+            <div class="col-12 col-md-7 offset-md-1">
+                <ul>
+                    <li>{% trans %}elleair.introduction.standard_iso_9001.title{% endtrans %}</li>
+                    <li>{% trans %}elleair.introduction.standard_iso_9001.detail{% endtrans %}</li>
+                </ul>
+            </div>
+            <!-- Standard 3 -->
+            <div class="col-12 col-md-4">
+                <img src="{{asset('elleair/images/history/halal.jpg')}}" class="img-fluid" style="max-width: 200px;" />
+            </div>
+            <div class="col-12 col-md-7 offset-md-1">
+                <ul>
+                    <li>{% trans %}elleair.introduction.standard_halal.title{% endtrans %}</li>
+                    <li>{% trans %}elleair.introduction.standard_halal.detail{% endtrans %}</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-12 col-md-4 pb-20">
+                <img src="{{asset('elleair/images/history/p03.jpg')}}" />
+            </div>
+            <div class="col-12 col-md-4 pb-20">
+                <img src="{{asset('elleair/images/history/p04.jpg')}}" />
+            </div>
+            <div class="col-12 col-md-4 pb-20">
+                <img src="{{asset('elleair/images/history/p05.jpg')}}" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="eco-section pt-50 pb-90 bg-tree-mini">
+    <div class="container">
+        <div class="section-title2 text-center pb-30 pt-40">
+            <h2>{% trans %}elleair.introduction.eco_friendly_factory{% endtrans %}</h2>
+            <p>{% trans %}elleair.introduction.eco_friendly_factory_description{% endtrans %}</p>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-4 pb-20 gal">
+                <img src="{{asset('elleair/images/history/p07.jpg')}}" />
+            </div>
+            <div class="col-12 col-md-4 pb-20 gal">
+                <img src="{{asset('elleair/images/history/p08.jpg')}}" />
+            </div>
+            <div class="col-12 col-md-4 pb-20 gal">
+                <img src="{{asset('elleair/images/history/p09.jpg')}}" />
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

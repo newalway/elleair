@@ -1,0 +1,22 @@
+{% block AddressesType_label %}{% endblock %}
+{% block AddressesType_errors %}{% endblock %}
+
+{% block LanguageSkillType_label %}{% endblock %}
+{% block LanguageSkillType_errors %}{% endblock %}
+
+
+
+{% block LanguageSkillType_widget %}
+<div class="row">
+    <div class="col-md-12">
+        {% for lskill in form.children %}
+            <div class="mr-3 pull-right">
+                {{ form_widget(lskill) }}
+                  <p class="help-block"><div class="form-messege error">  {{ form_errors(lskill) }}</div></p>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+{% endblock %}

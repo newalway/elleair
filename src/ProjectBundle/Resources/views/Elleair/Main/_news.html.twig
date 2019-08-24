@@ -1,0 +1,37 @@
+<div class="news-section pt-60 pb-70">
+    <div class="container">
+        <div class="row">
+            <!-- Section Title Start -->
+            <div class="section-title text-center col-12 pb-50 pt-40">
+                <h1>PR&NEWS</h1>
+                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour.</p>
+            </div>
+            <!-- Section Title End -->
+            {% for news in pr_news %}
+            <!-- News Start -->
+            <div class="news col-lg-4 col-md-6 col-12 mb-30">
+                <!-- Image -->
+                <a href="{{path('news_detail',{'id':news.id,'slug':news.getTitle|slug})}}" class="image"><img src="{{asset(news.image)}}" alt="{{news.getTitle}}" /></a>
+                <!-- Content -->
+                <div class="content">
+                    <h3><a href="{{path('news_detail',{'id':news.id,'slug':news.getTitle|slug})}}">{{news.getTitle}}</a></h3>
+
+                    <!-- Meta -->
+                    <div class="meta">
+
+                        {#{% if news.ourBrand %}
+                            <a href="{{path('news_detail',{'id':news.id,'slug':news.getTitle|slug})}}" class="meta-item">
+                                <img src="{{news.ourBrand.imageLabel}}" alt="{{news.getTitle|slug}}" />
+                            </a>
+                        {% endif %}#}
+                        <span class="meta-item"><i class="fa fa-calendar"></i>{{ news.publicDate|date("d.m.Y") }}</span>
+                    </div>
+                    <p class="shot-desc">{{news.getShortDesc|nl2br }}</p>
+                    <a href="{{path('news_detail',{'id':news.id,'slug':news.getTitle|slug})}}" class="btn btn-sm btn-red">read more</a>
+                </div>
+            </div>
+            <!-- News End -->
+            {% endfor %}
+        </div>
+    </div>
+</div>

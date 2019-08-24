@@ -1,0 +1,42 @@
+{% extends "ProjectBundle:"~ view_layout ~":layout.html.twig" %}
+
+{% block title %} {{ parent() }}{% endblock %}
+{% block hr_active %}active{% endblock %}
+{% block job_opening_active %}active{% endblock %}
+
+{% block breadcrumb_bg %}{{asset('elleair/images/banner/page-banner-bg.jpg')}}{% endblock %}
+{% block breadcrumb_data_opacity %}6{% endblock %}
+{% block breadcrumb_title %}{% trans %}menu.job.opening{% endtrans %}{% endblock %}
+{% block breadcrumb %}
+    <li><a>{% trans %}menu.hr.recruitment{% endtrans %}</a></li>
+    <li class="active">{% trans %}menu.job.opening{% endtrans %}</li>
+{% endblock %}
+
+
+{% block javascripts %}
+	{{ parent() }}
+{% endblock %}
+{% block content %}
+<!-- Jobs Section Start -->
+
+<div class="news-section pt-100 pb-35">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-12 mb-50">
+                <div class="row">
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Jobs Section End -->
+
+{% endblock %}
+
+{% block javascripts_body %}
+    {{ parent() }}
+
+{% endblock %}

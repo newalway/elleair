@@ -1,0 +1,124 @@
+{% extends "ProjectBundle:"~ view_layout ~":layout.html.twig" %}
+
+{% block title %}{{data.getTitle}} | {% trans %}menu.news.pr{% endtrans %} | {{ parent() }}{% endblock %}
+{% block news_active %}active{% endblock %}
+
+{% block breadcrumb_bg %}{% if data.newsCategorys %}{{asset(data.newsCategorys.image)}}{% else %}{{asset('elleair/images/banner/banner-pr-csr-2.png')}}{% endif %}{% endblock %}
+{% block breadcrumb_title %}{{data.getTitle}}{% endblock %}
+{% block breadcrumb %}
+	<li><a href="{{path('news')}}">{% trans %}menu.news.pr{% endtrans %}</a></li>
+	{% if category_name %}
+		<li >
+			<a class="" href="{{path('news_category',{'cate_id':data.newsCategorys.id,'slug':data.newsCategorys.getTitle|slug})}}">
+				{{category_name}}
+			</a>
+		</li>
+	{% endif %}
+{% endblock %}
+
+{% block breadcrumb_data_opacity %}5{% endblock %}
+{% block breadcrumb_data_overlay %}blue{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+{% endblock %}
+{% block content %}
+<!-- News Section Start -->
+<div class="news-section pt-100 pb-50">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 col-12 mb-50">
+				<div class="row">
+					<!-- News Start -->
+					<div class="single-news col-12 mb-60">
+						<!-- Image -->
+						<div class="image">
+							{% if data.image %}
+								<img src="{{asset(data.image)}}" alt="{{data.getTitle}}"/>
+							{% endif %}
+						</div>
+						<!-- Content -->
+						<div class="content">
+							<h3>{{data.getTitle}}</h3>
+							<!-- Meta -->
+							<div class="meta">
+								{#{% if data.ourBrand %}
+		                            <a href="{{path('news_detail',{'id':data.id,'slug':data.getTitle|slug})}}" class="meta-item">
+		                                <img src="{{data.ourBrand.imageLabel}}" alt="{{data.getTitle|slug}}" />
+		                            </a>
+		                        {% endif %}#}
+								<span class="meta-item"><i class="fa fa-calendar"></i>{{ data.publicDate|date("d.m.Y") }}</span>
+							</div>
+							{% if data.getDescription %}
+								<p>{{data.getDescription|raw}}</p>
+							{% endif %}
+						</div>
+
+						<!-- News Footer -->
+						<div class="news-footer">
+							<!-- Tags -->
+							<div class="news-tags">
+								<a class="" href="{{path('news_category',{'cate_id':data.newsCategorys.id,'slug':data.newsCategorys.getTitle|slug})}}">{% trans %}back{% endtrans %}</a>
+							</div>
+							<!-- Share -->
+							<div class="news-share">
+								<a href="#"><i class="fa fa-facebook"></i></a>
+								<a href="#"><i class="fa fa-twitter"></i></a>
+								<a href="#"><i class="fa fa-google-plus"></i></a>
+								<a href="#"><i class="fa fa-instagram"></i></a>
+							</div>
+						</div>
+					</div>
+					<!-- News End -->
+				</div>
+			</div>
+
+			<!-- Sidebar Wrap Start -->
+            <div class="sidebar-wrap col-lg-4 col-12 mb-50">
+				<div class="sidebar">
+					<h4 class="sidebar-title">recent news</h4>
+					{% for news_latest in recent_news %}
+					<div class="sidebar-news">
+						<a href="{{path('news_detail',{'id':news_latest.id,'slug':news_latest.getTitle|slug})}}" class="image">
+							{% if news_latest.image %}
+								<img src="{{asset(news_latest.image)}}" alt="{{news_latest.getTitle}}"/>
+							{% endif %}
+						</a>
+						<div class="content">
+							<h4><a href="{{path('news_detail',{'id':news_latest.id,'slug':news_latest.getTitle|slug})}}">{{news_latest.getTitle}}</a></h4>
+							{#{% if news_latest.ourBrand %}
+								<a href="{{path('news_detail',{'id':news_latest.id,'slug':news_latest.getTitle|slug})}}" class="meta-item">
+									<img src="{{news_latest.ourBrand.imageLabel}}" alt="{{news_latest.getTitle|slug}}" />
+								</a>
+							{% endif %}#}
+						</div>
+					</div>
+					{% endfor %}
+				</div>
+				<div class="sidebar">
+			        <h4 class="sidebar-title">categories</h4>
+	                {#{% include "ProjectBundle:"~ view_main ~":_sidebar_news.html.twig" %}#}
+					<ul class="sidebar-links">
+						{% if (app.request.attributes.get('cate_id') == null )%}
+							{% set id = app.request.attributes.get('id') %}
+						{% else %}
+							{% set id = app.request.attributes.get('cate_id') %}
+						{% endif %}
+						{% set parameter = {'_route': app.request.attributes.get('_route'),'id': id}%}
+						{{ render(controller('ProjectBundle:Main:_menu_news',{ 'parameter': parameter })) }}
+					</ul>
+				</div>
+            </div>
+            <!-- Sidebar Wrap End -->
+
+		</div>
+	</div>
+</div>
+<!-- News Section End -->
+
+{% endblock %}
+
+{% block javascripts_body %}
+    {{ parent() }}
+
+{% endblock %}

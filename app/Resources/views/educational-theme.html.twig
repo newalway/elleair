@@ -1,0 +1,66 @@
+{# By default, collection uses the form_widget block to create its markup, but we want a table #}
+{% block collection_widget %}
+    {% spaceless %}
+
+    {#
+     # This is almost a copy/paste of jquery.collection.html.twig, we can't use it as it also
+     # use form_widget. Note that we also use form_widget(prototype) instead of form_row(prototype)
+     # to avoid generating extra markup.
+     #}
+    {% if prototype is defined %}
+        {% set attr = attr|merge({'data-prototype': form_widget(prototype)}) %}
+        {% set attr = attr|merge({'data-prototype-name': prototype.vars.name}) %}
+    {% endif %}
+    {% set attr = attr|merge({'data-allow-add': allow_add ? 1 : 0}) %}
+    {% set attr = attr|merge({'data-allow-remove': allow_delete ? 1 : 0 }) %}
+    {% set attr = attr|merge({'data-name-prefix': full_name}) %}
+<div class="table-responsive">
+
+
+    <fieldset class="well m-3">
+
+
+        {# Don't forget to add the collection attributes in your markup #}
+        <table {{ block('widget_attributes') }}>
+            <thead>
+                <th class="text-center">ระดับการศึกษา<br> Level</th>
+                <th class="text-center">สถานที่ศึกษา <br>Institution</th>
+                <th class="text-center">วุฒิการศึกษา <br>Degree</th>
+                <th class="text-center">สาขาวิชา <br>Major</th>
+                <th class="text-center">คะแนนเฉลี่ย <br>GPA</th>
+                <th class="text-center">ปีที่สำเร็จการศึกษา <br>Graduation Year</th>
+
+            </thead>
+            <tbody>
+
+                {#
+                 # we can't form_widget(form) as it would render parent markup for a collection, so
+                 # we iterate manually on children
+                 #}
+                {% for item in form %}
+                    {{ form_widget(item) }}
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+    </fieldset>
+</div>
+    {% endspaceless %}
+{% endblock %}
+
+{% block EducationalType_widget %}
+
+    {# widget_attributes will generate class="item" from the DiscountCollectionType.entry_options configuration #}
+    <tr {{ block('widget_attributes') }}>
+        <td>{{ form_widget(form.level) }}{{ form_errors(form.level) }}</td>
+        <td>{{ form_widget(form.institution) }}</td>
+        <td>{{ form_widget(form.degree) }}</td>
+        <td>{{ form_widget(form.major) }}</td>
+        <td>{{ form_widget(form.gpa) }}</td>
+        <td>{{ form_widget(form.graduation_year) }}</td>
+
+    </tr>
+
+{% endblock %}
+{% block EducationalType_label %}{% endblock %}

@@ -1,0 +1,40 @@
+
+    <!-- Sidebar -->
+    <!-- <div class="sidebar">
+        <div class="sidebar-search">
+            <form action="#">
+                <input type="text" placeholder="Enter Keywords">
+                <button><i class="fa fa-search"></i></button>
+            </form>
+        </div>
+    </div> -->
+{% if recent_news|length > 0 %}
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h4 class="sidebar-title">recent news</h4>
+        {% for news_latest in recent_news %}
+        <div class="sidebar-news">
+            <a href="{{path('news_detail',{'id':news_latest.id,'slug':news_latest.getTitle|slug})}}" class="image">
+                {% if news_latest.image %}
+                    <img src="{{asset(news_latest.image)}}" alt="{{news_latest.getTitle}}"/>
+                {% endif %}
+            </a>
+            <div class="content">
+                <h4><a href="{{path('news_detail',{'id':news_latest.id,'slug':news_latest.getTitle|slug})}}">{{news_latest.getTitle}}</a></h4>
+                {% if news_latest.author %}
+                <a href="{{path('news_detail',{'id':news_latest.id,'slug':news_latest.getTitle|slug})}}" class="meta-item">{{news_latest.author|iconAuthor|raw}}</a>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endif %}
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h4 class="sidebar-title">categories</h4>
+        <!-- <ul class="sidebar-links"> -->
+            {#<li><a href="{{path('news')}}">All</a></li>#}
+            {#{{ render(controller('ProjectBundle:Main:_sidebar_menu_news')) }}#}
+            {{ render(controller('ProjectBundle:Main:_sidebar_menu_news', {'arr_path_category_id':arr_path_category_id})) }}
+        <!-- </ul> -->
+    </div>
